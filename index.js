@@ -15,7 +15,7 @@ module.exports = {
       axeFlags: { type: 'string' },
     },
   },
-  async postBuild({ pluginConfig: { site, axeFlags }, constants: { CACHE_DIR } }) {
+  async onPostBuild({ pluginConfig: { site, axeFlags }, constants: { CACHE_DIR } }) {
     const resultsDir = `${CACHE_DIR}/axe-results`
     await makeDir(resultsDir)
 
