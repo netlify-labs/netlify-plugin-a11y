@@ -19,7 +19,7 @@
     "netlify",
     "netlify-plugin"
   ],
-  "author": "",
+  "author": "swyx <shawnthe1@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=8.12.0"
@@ -27,5 +27,6 @@
   "devDependencies": {
     "auto-changelog": "^1.16.2",
     "gh-release": "^3.5.0"
-  }
+  },
+  "repository": "https://github.com/sw-yx/netlify-plugin-axe"
 }
