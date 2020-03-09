@@ -22,7 +22,8 @@ function netlifyPlugin(conf) {
         .replace(/^\//, '');
 
       await run.command(
-        `./node_modules/.bin/axe ${site} ${axeFlags} --save ${resultsPath}`
+        // `./node_modules/.bin/axe ${site} ${axeFlags} --save ${resultsPath}`
+        `axe ${site} ${axeFlags} --save ${resultsPath}`
       );
 
       let results = require(resultsPath);

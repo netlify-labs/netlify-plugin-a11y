@@ -73,3 +73,11 @@ npm install @netlify/build -g
 # In the project working directory, run the build as netlify would with the build bot
 netlify-build
 ```
+
+
+## Issues
+
+- https://github.com/jaimeiniesta/serverless-axe-cli/pull/1
+- https://github.com/adieuadieu/serverless-chrome/issues/143
+- https://gist.github.com/stephenmathieson/57c1fa4a8a6bdbb489f91d4a4f713ee9
+- npm install chromedriver
