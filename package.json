@@ -17,7 +17,9 @@
   },
   "keywords": [
     "netlify",
-    "netlify-plugin"
+    "netlify-plugin",
+    "accessibility",
+    "a11y"
   ],
   "author": "swyx <shawnthe1@gmail.com>",
   "license": "MIT",

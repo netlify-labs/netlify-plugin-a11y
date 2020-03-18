@@ -81,3 +81,6 @@ netlify-build
 - https://github.com/adieuadieu/serverless-chrome/issues/143
 - https://gist.github.com/stephenmathieson/57c1fa4a8a6bdbb489f91d4a4f713ee9
 - npm install chromedriver
+  - https://github.com/SeleniumHQ/selenium/issues/4863
+  - https://www.selenium.dev/documentation/en/webdriver/driver_requirements/
+- https://github.com/dequelabs/axe-cli/issues/84
