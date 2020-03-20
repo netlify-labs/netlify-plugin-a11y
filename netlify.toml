@@ -13,3 +13,6 @@
 
     # # optional config
     # resultMode = "error" # can switch to warn
+
+    ## Developer only
+    debugMode = true

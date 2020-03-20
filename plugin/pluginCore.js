@@ -12,17 +12,18 @@ exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
 
 exports.generateFilePaths = async function({
   fileAndDirPaths, // array, mix of html and directories
-  BUILD_DIR,
+  PUBLISH_DIR,
   testMode,
   debugMode
 }) {
   let htmlFilePaths = [];
   for (fileAndDirPath of fileAndDirPaths) {
-    if (fs.statSync(path.join(BUILD_DIR, fileAndDirPath)).isDirectory()) {
-      let subPaths = await walk(path.join(BUILD_DIR, fileAndDirPath));
+    const fullDirPath = path.join(process.cwd(), PUBLISH_DIR, fileAndDirPath);
+    if (fs.statSync(fullDirPath).isDirectory()) {
+      let subPaths = await walk(fullDirPath);
       htmlFilePaths = htmlFilePaths.concat(subPaths);
     } else {
-      htmlFilePaths.push(path.join(BUILD_DIR, fileAndDirPath));
+      htmlFilePaths.push(fullDirPath);
     }
   }
   return htmlFilePaths;

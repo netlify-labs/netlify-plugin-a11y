@@ -12,8 +12,8 @@ function netlifyPlugin(conf) {
   return {
     name: 'netlify-plugin-a11y',
     async onPostBuild({
-      pluginConfig: { checkPaths, resultMode = 'error' },
-      constants: { BUILD_DIR },
+      pluginConfig: { checkPaths, resultMode = 'error', debugMode },
+      constants: { PUBLISH_DIR },
       utils: { build }
     }) {
       if (!checkPaths) {
@@ -23,8 +23,11 @@ function netlifyPlugin(conf) {
       }
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
-        BUILD_DIR
+        PUBLISH_DIR
       });
+      if (debugMode) {
+        console.log({ htmlFilePaths });
+      }
       const results = await pluginCore.runPa11y({
         htmlFilePaths
       });
