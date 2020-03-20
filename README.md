@@ -5,7 +5,7 @@ may need the project to locally install `axe-core`, the resolution is
 
 this may be a duplicate of https://github.com/netlify/build/pull/294
 
-# netlify-plugin-fetch-feeds
+# netlify-plugin-a11y
 
 Run axe-cli and fail build if accessibility failures are found.
 

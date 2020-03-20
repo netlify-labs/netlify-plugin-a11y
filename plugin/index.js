@@ -5,10 +5,11 @@ const {
 
 const execa = require('execa');
 const makeDir = require('make-dir');
+const pa11y = require('pa11y');
 
 function netlifyPlugin(conf) {
   return {
-    name: 'netlify-plugin-axe',
+    name: 'netlify-plugin-a11y',
     async onPostBuild({
       pluginConfig: { site, axeFlags },
       constants: { CACHE_DIR },
