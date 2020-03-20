@@ -11,7 +11,10 @@ The demo site is a Gatsby blog that has been modified to have some inaccessible 
 - the [Hello World](https://netlify-plugin-a11y.netlify.com/hello-world/) page has an image with no `alt` text
 - the [Second Post](https://netlify-plugin-a11y.netlify.com/my-second-post/) page has a form no submit button, and an input with no label.
 
-You can see the impact of the plugin in the deploy logs of this demo site: https://app.netlify.com/sites/netlify-plugin-a11y/deploys. By default, the plugin is set to error on failure.
+You can see the impact of the plugin in the deploy logs of this demo site: https://app.netlify.com/sites/netlify-plugin-a11y/deploys. By default, the plugin is set to error on failure:
+
+
+![image](https://user-images.githubusercontent.com/6764957/77147207-226b8600-6a63-11ea-91b2-2de449ef6682.png)
 
 
 But if that is too drastic, you can switch to `resultMode = "warn"` so that builds don't fail:

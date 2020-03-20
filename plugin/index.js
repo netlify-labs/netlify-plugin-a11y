@@ -58,7 +58,10 @@ function netlifyPlugin(conf) {
         } else {
           results.forEach((res) => {
             console.warn(
-              `${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
+              `[${chalk.cyan.bold(res.documentTitle)} (${path.relative(
+                process.cwd(),
+                res.pageUrl
+              )})] ${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
                 res.message
               } (${chalk.cyan(res.context)})`
             );
