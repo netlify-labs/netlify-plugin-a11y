@@ -42,12 +42,12 @@ function netlifyPlugin(conf) {
         if (resultMode === 'error') {
           results.forEach((res) => {
             console.error(
-              `[${chalk.blue.bold(res.documentTitle)} (${path.relative(
+              `[${chalk.cyan.bold(res.documentTitle)} (${path.relative(
                 process.cwd(),
                 res.pageUrl
-              )})] ${chalk.red(res.type)} ${chalk.blue(res.typeCode)}: ${
+              )})] ${chalk.red(res.type)} ${chalk.cyan(res.typeCode)}: ${
                 res.message
-              } (${chalk.blue(res.context)})`
+              } (${chalk.cyan(res.context)})`
             );
           });
           build.failBuild(
@@ -58,9 +58,9 @@ function netlifyPlugin(conf) {
         } else {
           results.forEach((res) => {
             console.warn(
-              `${chalk.red(res.type)} ${chalk.blue(res.typeCode)}: ${
+              `${chalk.red(res.type)} ${chalk.cyan(res.typeCode)}: ${
                 res.message
-              } (${chalk.blue(res.context)})`
+              } (${chalk.cyan(res.context)})`
             );
           });
           console.warn(
