@@ -1,0 +1,15 @@
+[build]
+  command = "echo 'hi'"
+  publish = "demo"
+
+[[plugins]]
+  package = "./plugin/index.js"
+  [plugins.inputs]
+    # required config
+    checkPaths = [
+      'index.html',
+      '/blog'
+    ]
+
+    # # optional config
+    # resultMode = "error" # can switch to warn

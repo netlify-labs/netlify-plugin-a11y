@@ -4,16 +4,13 @@
   "description": "",
   "main": "plugin/index.js",
   "dependencies": {
-    "execa": "^4.0.0",
+    "chalk": "^3.0.0",
     "make-dir": "^3.0.0",
     "pa11y": "^5.3.0"
   },
-  "peerDependencies": {
-    "axe-cli": "^3.1.1",
-    "axe-core": "^3.3.2"
-  },
   "scripts": {
     "build": "netlify build",
+    "test": "jest",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "prepublishOnly": "git push && git push --tags && gh-release"
   },
@@ -30,7 +27,8 @@
   },
   "devDependencies": {
     "auto-changelog": "^1.16.2",
-    "gh-release": "^3.5.0"
+    "gh-release": "^3.5.0",
+    "jest": "^25.1.0"
   },
   "repository": "https://github.com/sw-yx/netlify-plugin-axe"
 }
