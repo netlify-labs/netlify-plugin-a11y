@@ -1,6 +1,6 @@
 {
   "name": "netlify-plugin-a11y",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "plugin/index.js",
   "dependencies": {
