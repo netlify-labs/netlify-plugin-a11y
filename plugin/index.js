@@ -34,9 +34,6 @@ function netlifyPlugin(conf) {
 
       if (results.length) {
         if (resultMode === 'error') {
-          build.failBuild(
-            `${results.length} accessibility issues found! Please fix.`
-          );
           results.forEach((res) => {
             console.error(
               `${chalk.red(res.type)} ${chalk.blue(res.typeCode)}: ${
@@ -44,10 +41,10 @@ function netlifyPlugin(conf) {
               } (${chalk.blue(res.context)})`
             );
           });
-          console.error(
-            chalk.red(
-              `${results.length} accessibility issues found! Please fix.`
-            )
+          build.failBuild(
+            `${chalk.yellow(
+              results.length
+            )} accessibility issues found! Please fix.`
           );
         } else {
           results.forEach((res) => {
