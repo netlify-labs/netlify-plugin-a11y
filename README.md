@@ -1,17 +1,12 @@
-# Notes 
-
-may need the project to locally install `axe-core`, the resolution is
-[a little weird](https://github.com/dequelabs/axe-cli/blob/819eaf299affdcb9e8e9ec76b843e231778612c1/lib/utils.js)
-
-this may be a duplicate of https://github.com/netlify/build/pull/294
-
 # netlify-plugin-a11y
 
-Run axe-cli and fail build if accessibility failures are found.
-
+Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail build if accessibility failures are found.
 
 > NOTICE: This is an experimental feature. Subject to lots of change.
 
+## Demo
+
+https://netlify-plugin-a11y.netlify.com/
 
 ## Overview
 
@@ -20,6 +15,10 @@ Run axe-cli and fail build if accessibility failures are found.
 ## Demonstration
 
 See this plugin being used in this simplified demo site:
+
+You can switch to `resultMode = "warn"` so that builds don't fail:
+
+![image](https://user-images.githubusercontent.com/6764957/77146484-868d4a80-6a61-11ea-84cc-703c2abd6d6e.png)
 
 ## Usage
 

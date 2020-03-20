@@ -9,7 +9,7 @@
     checkPaths = ['/']
 
     # # optional config
-    resultMode = "warn" # is "error" by default
+    # resultMode = "warn" # is "error" by default
 
     # # Developer only
     # debugMode = true # extra logging for plugin developers
