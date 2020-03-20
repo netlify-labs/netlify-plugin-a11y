@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "auto-changelog": "^1.16.2",
+    "chromedriver": "^80.0.1",
     "gh-release": "^3.5.0"
   },
   "repository": "https://github.com/sw-yx/netlify-plugin-axe"
