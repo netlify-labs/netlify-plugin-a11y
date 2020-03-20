@@ -6,13 +6,10 @@
   package = "./plugin/index.js"
   [plugins.inputs]
     # required config
-    checkPaths = [
-      'index.html',
-      '/blog'
-    ]
+    checkPaths = ['/']
 
     # # optional config
-    # resultMode = "error" # can switch to warn
+    resultMode = "warn" # is "error" by default
 
-    ## Developer only
-    debugMode = true
+    # # Developer only
+    # debugMode = true # extra logging for plugin developers

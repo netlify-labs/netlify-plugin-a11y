@@ -6,8 +6,24 @@ const { promisify } = require('util');
 const readDir = promisify(fs.readdir);
 
 exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
-  const results = await Promise.all(htmlFilePaths.map(pa11y));
-  return results;
+  let results = await Promise.all(htmlFilePaths.map(pa11y));
+  results = results
+    .filter((res) => res.issues.length)
+    .map((res) =>
+      res.issues.map((issue) => ({
+        ...issue,
+        documentTitle: res.documentTitle,
+        pageUrl: res.pageUrl.slice(7)
+      }))
+    );
+  let flattenedResults = [];
+  results.forEach(
+    (res) => void (flattenedResults = flattenedResults.concat(res))
+  );
+  if (debugMode) {
+    console.log({ flattenedResults, results });
+  }
+  return flattenedResults;
 };
 
 exports.generateFilePaths = async function({

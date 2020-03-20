@@ -6,6 +6,7 @@
 const chalk = require('chalk');
 const makeDir = require('make-dir');
 const pa11y = require('pa11y');
+const path = require('path');
 const pluginCore = require('./pluginCore');
 
 function netlifyPlugin(conf) {
@@ -29,17 +30,22 @@ function netlifyPlugin(conf) {
         console.log({ htmlFilePaths });
       }
       const results = await pluginCore.runPa11y({
-        htmlFilePaths
+        htmlFilePaths,
+        debugMode
       });
 
       if (results.length) {
         if (debugMode) {
           console.log({ results });
+          // console.log(results);
         }
         if (resultMode === 'error') {
           results.forEach((res) => {
             console.error(
-              `${chalk.red(res.type)} ${chalk.blue(res.typeCode)}: ${
+              `[${chalk.blue.bold(res.documentTitle)} (${path.relative(
+                process.cwd(),
+                res.pageUrl
+              )})] ${chalk.red(res.type)} ${chalk.blue(res.typeCode)}: ${
                 res.message
               } (${chalk.blue(res.context)})`
             );
