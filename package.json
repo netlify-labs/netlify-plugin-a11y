@@ -1,6 +1,6 @@
 {
-  "name": "netlify-plugin-axe",
-  "version": "0.0.4",
+  "name": "netlify-plugin-a11y",
+  "version": "0.0.1",
   "description": "",
   "main": "plugin/index.js",
   "dependencies": {

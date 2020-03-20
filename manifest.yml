@@ -2,3 +2,5 @@ name: netlify-plugin-axe
 inputs:
   - name: checkPaths
   - name: resultMode
+  - name: debugMode
+  - name: testMode
