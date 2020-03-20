@@ -33,6 +33,9 @@ function netlifyPlugin(conf) {
       });
 
       if (results.length) {
+        if (debugMode) {
+          console.log({ results });
+        }
         if (resultMode === 'error') {
           results.forEach((res) => {
             console.error(
