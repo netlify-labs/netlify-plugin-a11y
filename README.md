@@ -35,6 +35,13 @@ package = "netlify-plugin-a11y"
   
   # required config
   checkPaths = ['/'] # you can give an array of directories or paths to html files, that you want to run a11y checks on
+
+  ## Another checkPaths Example 
+  checkPaths = [
+    '/blog',
+    '/about.html',
+    '/super/specific/route/index.html',
+  ]
   
   # # optional config
   # resultMode = "warn" # is "error" by default
