@@ -19,7 +19,8 @@ You can see the impact of the plugin in the deploy logs of this demo site: https
 
 But if that is too drastic, you can switch to `resultMode = "warn"` so that builds don't fail:
 
-![image](https://user-images.githubusercontent.com/6764957/77146484-868d4a80-6a61-11ea-84cc-703c2abd6d6e.png)
+![image](https://user-images.githubusercontent.com/6764957/77147811-8b073280-6a64-11ea-834d-6b872e543e23.png)
+
 
 ## Usage
 
