@@ -45,7 +45,7 @@ function netlifyPlugin(conf) {
               `[${chalk.cyan.bold(res.documentTitle)} (${path.relative(
                 process.cwd(),
                 res.pageUrl
-              )})] ${chalk.pink(res.type)} ${chalk.cyan(res.typeCode)}: ${
+              )})] ${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
                 res.message
               } (${chalk.cyan(res.context)})`
             );
@@ -58,13 +58,13 @@ function netlifyPlugin(conf) {
         } else {
           results.forEach((res) => {
             console.warn(
-              `${chalk.pink(res.type)} ${chalk.cyan(res.typeCode)}: ${
+              `${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
                 res.message
               } (${chalk.cyan(res.context)})`
             );
           });
           console.warn(
-            chalk.pink(
+            chalk.magenta(
               `${results.length} accessibility issues found! Check the warnings.`
             )
           );
