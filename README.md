@@ -2,7 +2,7 @@
 
 Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail build if accessibility failures are found.
 
-> NOTICE: This is an experimental feature. Subject to lots of change.
+> NOTICE: This is a [Netlify Build](https://github.com/netlify/build) plugin, which is in public beta. You must have Netlify Build enabled to use this plugin.
 
 ## Demo
 
@@ -75,3 +75,6 @@ npm install @netlify/build -g
 netlify-build
 ```
 
+## Future plans
+
+- configure specific a11y rules to run
