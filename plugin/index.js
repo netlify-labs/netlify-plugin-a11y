@@ -18,7 +18,7 @@ function netlifyPlugin(conf) {
       utils: { build }
     }) {
       if (!checkPaths) {
-        throw new Error(
+        build.failBuild(
           `checkPaths is undefined - please specify some checkPaths`
         );
       }
