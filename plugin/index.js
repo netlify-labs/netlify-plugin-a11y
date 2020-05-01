@@ -9,8 +9,7 @@ const pa11y = require('pa11y');
 const path = require('path');
 const pluginCore = require('./pluginCore');
 
-function netlifyPlugin(conf) {
-  return {
+module.exports = {
     name: 'netlify-plugin-a11y',
     async onPostBuild({
       pluginConfig: { checkPaths, resultMode = 'error', debugMode },
@@ -74,7 +73,4 @@ function netlifyPlugin(conf) {
         }
       }
     }
-  };
 }
-
-module.exports = netlifyPlugin;
