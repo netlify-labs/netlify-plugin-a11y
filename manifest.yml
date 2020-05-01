@@ -1,4 +1,4 @@
-name: netlify-plugin-axe
+name: netlify-plugin-a11y
 inputs:
   - name: checkPaths
   - name: resultMode
