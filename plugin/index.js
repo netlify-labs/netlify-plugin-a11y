@@ -7,8 +7,7 @@ const chalk = require('chalk');
 const path = require('path');
 const pluginCore = require('./pluginCore');
 
-function netlifyPlugin(conf) {
-  return {
+module.exports = {
     name: 'netlify-plugin-a11y',
     async onPostBuild({
       inputs: { checkPaths, resultMode, debugMode },
@@ -67,7 +66,4 @@ function netlifyPlugin(conf) {
         }
       }
     }
-  };
 }
-
-module.exports = netlifyPlugin;
