@@ -2,5 +2,7 @@ name: netlify-plugin-a11y
 inputs:
   - name: checkPaths
   - name: resultMode
+    default: error
   - name: debugMode
+    defaut: false
   - name: testMode
