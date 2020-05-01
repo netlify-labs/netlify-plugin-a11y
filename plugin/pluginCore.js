@@ -34,7 +34,7 @@ exports.generateFilePaths = async function({
 }) {
   let htmlFilePaths = [];
   for (fileAndDirPath of fileAndDirPaths) {
-    const fullDirPath = path.join(process.cwd(), PUBLISH_DIR, fileAndDirPath);
+    const fullDirPath = path.join(PUBLISH_DIR, fileAndDirPath);
     if (fs.statSync(fullDirPath).isDirectory()) {
       let subPaths = await walk(fullDirPath);
       htmlFilePaths = htmlFilePaths.concat(subPaths);

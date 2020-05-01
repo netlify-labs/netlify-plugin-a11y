@@ -1,6 +1,10 @@
-name: netlify-plugin-axe
+name: netlify-plugin-a11y
 inputs:
   - name: checkPaths
+    required: true
   - name: resultMode
+    default: error
   - name: debugMode
+    default: false
   - name: testMode
+    default: false

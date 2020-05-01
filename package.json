@@ -5,7 +5,6 @@
   "main": "plugin/index.js",
   "dependencies": {
     "chalk": "^3.0.0",
-    "make-dir": "^3.0.0",
     "pa11y": "^5.3.0"
   },
   "scripts": {
@@ -30,5 +29,8 @@
     "gh-release": "^3.5.0",
     "jest": "^25.1.0"
   },
-  "repository": "https://github.com/sw-yx/netlify-plugin-a11y"
+  "repository": "https://github.com/sw-yx/netlify-plugin-a11y",
+  "bugs": {
+    "url": "https://github.com/sw-yx/netlify-plugin-a11y/issues"
+  }
 }

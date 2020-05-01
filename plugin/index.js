@@ -4,23 +4,15 @@
 // } = require('process');
 
 const chalk = require('chalk');
-const makeDir = require('make-dir');
-const pa11y = require('pa11y');
 const path = require('path');
 const pluginCore = require('./pluginCore');
 
-function netlifyPlugin(conf) {
-  return {
+module.exports = {
     async onPostBuild({
-      pluginConfig: { checkPaths, resultMode = 'error', debugMode },
+      inputs: { checkPaths, resultMode, debugMode },
       constants: { PUBLISH_DIR },
       utils: { build }
     }) {
-      if (!checkPaths) {
-        build.failBuild(
-          `checkPaths is undefined - please specify some checkPaths`
-        );
-      }
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
         PUBLISH_DIR
@@ -73,7 +65,4 @@ function netlifyPlugin(conf) {
         }
       }
     }
-  };
 }
-
-module.exports = netlifyPlugin;
