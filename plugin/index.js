@@ -4,8 +4,6 @@
 // } = require('process');
 
 const chalk = require('chalk');
-const makeDir = require('make-dir');
-const pa11y = require('pa11y');
 const path = require('path');
 const pluginCore = require('./pluginCore');
 
