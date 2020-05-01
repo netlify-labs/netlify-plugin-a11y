@@ -5,7 +5,6 @@
   "main": "plugin/index.js",
   "dependencies": {
     "chalk": "^3.0.0",
-    "make-dir": "^3.0.0",
     "pa11y": "^5.3.0"
   },
   "scripts": {
