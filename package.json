@@ -30,5 +30,8 @@
     "gh-release": "^3.5.0",
     "jest": "^25.1.0"
   },
-  "repository": "https://github.com/sw-yx/netlify-plugin-a11y"
+  "repository": "https://github.com/sw-yx/netlify-plugin-a11y",
+  "bugs": {
+    "url": "https://github.com/sw-yx/netlify-plugin-a11y/issues"
+  }
 }
