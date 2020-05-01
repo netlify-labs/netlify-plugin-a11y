@@ -3,4 +3,4 @@ inputs:
   - name: checkPaths
   - name: resultMode
   - name: debugMode
-  - name: testMode
+# - name: testMode
