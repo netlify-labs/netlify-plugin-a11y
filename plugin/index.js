@@ -11,7 +11,7 @@ function netlifyPlugin(conf) {
   return {
     name: 'netlify-plugin-a11y',
     async onPostBuild({
-      pluginConfig: { checkPaths, resultMode, debugMode },
+      inputs: { checkPaths, resultMode, debugMode },
       constants: { PUBLISH_DIR },
       utils: { build }
     }) {
