@@ -15,11 +15,6 @@ function netlifyPlugin(conf) {
       constants: { PUBLISH_DIR },
       utils: { build }
     }) {
-      if (!checkPaths) {
-        build.failBuild(
-          `checkPaths is undefined - please specify some checkPaths`
-        );
-      }
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
         PUBLISH_DIR
