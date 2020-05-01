@@ -11,7 +11,6 @@ const pluginCore = require('./pluginCore');
 
 function netlifyPlugin(conf) {
   return {
-    name: 'netlify-plugin-a11y',
     async onPostBuild({
       pluginConfig: { checkPaths, resultMode = 'error', debugMode },
       constants: { PUBLISH_DIR },
