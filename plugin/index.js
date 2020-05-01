@@ -8,7 +8,6 @@ const path = require('path');
 const pluginCore = require('./pluginCore');
 
 module.exports = {
-    name: 'netlify-plugin-a11y',
     async onPostBuild({
       inputs: { checkPaths, resultMode, debugMode },
       constants: { PUBLISH_DIR },
