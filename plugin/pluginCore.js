@@ -1,9 +1,8 @@
-const pa11y = require('pa11y');
-const path = require('path');
-const fs = require('fs');
+const { extname } = require('path')
 
-const { promisify } = require('util');
-const readDir = promisify(fs.readdir);
+const pa11y = require('pa11y');
+const readdirp = require('readdirp')
+const { isDirectory, isFile } = require('path-type')
 
 exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
   let results = await Promise.all(htmlFilePaths.map(pa11y));
@@ -32,34 +31,29 @@ exports.generateFilePaths = async function({
   testMode,
   debugMode
 }) {
-  let htmlFilePaths = [];
-  for (fileAndDirPath of fileAndDirPaths) {
-    const fullDirPath = path.join(PUBLISH_DIR, fileAndDirPath);
-    if (fs.statSync(fullDirPath).isDirectory()) {
-      let subPaths = await walk(fullDirPath);
-      htmlFilePaths = htmlFilePaths.concat(subPaths);
-    } else {
-      htmlFilePaths.push(fullDirPath);
-    }
-  }
-  return htmlFilePaths;
+  const htmlFilePaths = await Promise.all(
+    fileAndDirPaths.map(fileAndDirPath => findHtmlFiles(`${PUBLISH_DIR}/${fileAndDirPath}`))
+  )
+  return [].concat(...htmlFilePaths)
 };
 
-var walk = async function(dir, filelist) {
-  var files = await readDir(dir);
-  filelist = filelist || [];
-  await Promise.all(
-    files.map(async function(file) {
-      const dirfile = path.join(dir, file);
-      if (fs.statSync(dirfile).isDirectory()) {
-        filelist = await walk(dirfile + '/', filelist);
-      } else {
-        if (dirfile.endsWith('.html')) filelist.push(dirfile);
-      }
-    })
-  );
-  return filelist;
-};
+const findHtmlFiles = async function(fileAndDirPath) {
+  if (await isDirectory(fileAndDirPath)) {
+    const fileInfos = await readdirp.promise(fileAndDirPath, { fileFilter: '*.html' })
+    return fileInfos.map(({ fullPath }) => fullPath)
+  }
+
+  if (!(await isFile(fileAndDirPath))) {
+    console.warn(`Folder ${fileAndDirPath} was provided in "checkPaths", but does not exist - it either indicates something went wrong with your build, or you can simply delete this folder from your "checkPaths" in netlify.toml`)
+    return []
+  }
+
+  if (extname(fileAndDirPath) !== '.html') {
+    return []
+  }
+
+  return [fileAndDirPath]
+}
 
 //  res:
 //    [ { code: 'WCAG2AA.Principle1.Guideline1_1.1_1_1.H37',
