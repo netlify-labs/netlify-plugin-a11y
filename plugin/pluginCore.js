@@ -2,7 +2,7 @@ const { extname } = require('path')
 
 const pa11y = require('pa11y');
 const readdirp = require('readdirp')
-const { isDirectory } = require('path-type')
+const { isDirectory, isFile } = require('path-type')
 
 exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
   let results = await Promise.all(htmlFilePaths.map(pa11y));
@@ -41,6 +41,11 @@ const findHtmlFiles = async function(fileAndDirPath) {
   if (await isDirectory(fileAndDirPath)) {
     const fileInfos = await readdirp.promise(fileAndDirPath, { fileFilter: '*.html' })
     return fileInfos.map(({ fullPath }) => fullPath)
+  }
+
+  if (!(await isFile(fileAndDirPath))) {
+    console.warn(`Folder ${fileAndDirPath} was provided in "checkPaths", but does not exist - it either indicates something went wrong with your build, or you can simply delete this folder from your "checkPaths" in netlify.toml`)
+    return []
   }
 
   if (extname(fileAndDirPath) !== '.html') {
