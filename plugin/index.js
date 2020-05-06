@@ -9,12 +9,13 @@ const pluginCore = require('./pluginCore');
 
 module.exports = {
     async onPostBuild({
-      inputs: { checkPaths, resultMode, debugMode },
+      inputs: { checkPaths, ignoreDirectories, resultMode, debugMode },
       constants: { PUBLISH_DIR },
       utils: { build }
     }) {
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
+        ignoreDirectories: ignoreDirectories || [],
         PUBLISH_DIR
       });
       if (debugMode) {
