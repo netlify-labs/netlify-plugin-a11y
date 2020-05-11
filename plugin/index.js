@@ -22,6 +22,7 @@ module.exports = {
       }
       const results = await pluginCore.runPa11y({
         htmlFilePaths,
+        build,
         debugMode
       });
 

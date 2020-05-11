@@ -4,8 +4,8 @@ const pa11y = require('pa11y');
 const readdirp = require('readdirp')
 const { isDirectory, isFile } = require('path-type')
 
-exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
-  let results = await Promise.all(htmlFilePaths.map(pa11y));
+exports.runPa11y = async function({ htmlFilePaths, build, testMode, debugMode }) {
+  let results = await Promise.all(htmlFilePaths.map(htmlFilePath => runPa11yOnFile(htmlFilePath, build)));
   results = results
     .filter((res) => res.issues.length)
     .map((res) =>
@@ -24,6 +24,14 @@ exports.runPa11y = async function({ htmlFilePaths, testMode, debugMode }) {
   }
   return flattenedResults;
 };
+
+const runPa11yOnFile = async function(htmlFilePath, build) {
+  try {
+    return await pa11y(htmlFilePath)
+  } catch (error) {
+    build.failBuild(`pa11y failed`, { error })
+  }
+}
 
 exports.generateFilePaths = async function({
   fileAndDirPaths, // array, mix of html and directories

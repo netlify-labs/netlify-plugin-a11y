@@ -5,7 +5,8 @@ const path = require('path');
 const pluginCore = require('../../plugin/pluginCore.js');
 test('runPa11y works', async () => {
   const results = await pluginCore.runPa11y({
-    htmlFilePaths: [path.join(__dirname, 'publishDir/index.html')]
+    htmlFilePaths: [path.join(__dirname, 'publishDir/index.html')],
+    build: { failBuild() {} }
   });
   expect(results).toMatchSnapshot();
 });
