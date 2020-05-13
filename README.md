@@ -9,7 +9,7 @@ Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail
 The demo site is a Gatsby blog that has been modified to have some inaccessible elements: https://netlify-plugin-a11y.netlify.com/
 
 - the [Hello World](https://netlify-plugin-a11y.netlify.com/hello-world/) page has an image with no `alt` text
-- the [Second Post](https://netlify-plugin-a11y.netlify.com/my-second-post/) page has a form no submit button, and an input with no label.
+- the [Second Post](https://netlify-plugin-a11y.netlify.com/my-second-post/) page has a form with no submit button, and an input with no label.
 
 You can see the impact of the plugin in the deploy logs of this demo site: https://app.netlify.com/sites/netlify-plugin-a11y/deploys. By default, the plugin is set to error on failure:
 
