@@ -35,19 +35,29 @@ const runPa11yOnFile = async function(htmlFilePath, build) {
 
 exports.generateFilePaths = async function({
   fileAndDirPaths, // array, mix of html and directories
+  ignoreDirectories = [],
   PUBLISH_DIR,
   testMode,
   debugMode
 }) {
+  const excludeDirGlobs = ignoreDirectories.map(
+    // add ! and strip leading slash
+    (dir) => `!${dir.replace(/^\/+/, "")}`
+  );
   const htmlFilePaths = await Promise.all(
-    fileAndDirPaths.map(fileAndDirPath => findHtmlFiles(`${PUBLISH_DIR}/${fileAndDirPath}`))
+    fileAndDirPaths.map(fileAndDirPath =>
+      findHtmlFiles(`${PUBLISH_DIR}${fileAndDirPath}`, excludeDirGlobs)
+    )
   )
   return [].concat(...htmlFilePaths)
 };
 
-const findHtmlFiles = async function(fileAndDirPath) {
+const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
   if (await isDirectory(fileAndDirPath)) {
-    const fileInfos = await readdirp.promise(fileAndDirPath, { fileFilter: '*.html' })
+    const fileInfos = await readdirp.promise(fileAndDirPath, {
+      fileFilter: '*.html',
+      directoryFilter
+    })
     return fileInfos.map(({ fullPath }) => fullPath)
   }
 
