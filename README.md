@@ -2,8 +2,6 @@
 
 Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail build if accessibility failures are found.
 
-> NOTICE: This is a [Netlify Build](https://github.com/netlify/build) plugin, which is in public beta. You must have Netlify Build enabled to use this plugin.
-
 ## Demo
 
 The demo site is a Gatsby blog that has been modified to have some inaccessible elements: https://netlify-plugin-a11y.netlify.com/
