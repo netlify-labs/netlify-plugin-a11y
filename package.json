@@ -21,7 +21,7 @@
     "accessibility",
     "a11y"
   ],
-  "author": "swyx <shawnthe1@gmail.com>",
+  "author": "swyx <swyx@dontemail.me>",
   "license": "MIT",
   "engines": {
     "node": ">=8.12.0"
