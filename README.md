@@ -2,8 +2,6 @@
 
 Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail build if accessibility failures are found.
 
-> NOTICE: This is a [Netlify Build](https://github.com/netlify/build) plugin, which is in public beta. You must have Netlify Build enabled to use this plugin.
-
 ## Demo
 
 The demo site is a Gatsby blog that has been modified to have some inaccessible elements: https://netlify-plugin-a11y.netlify.com/
@@ -24,7 +22,9 @@ But if that is too drastic, you can switch to `resultMode = "warn"` so that buil
 
 ## Usage
 
-To install, add the following lines to your `netlify.toml` file:
+To install the plugin in the Netlify UI, use this [direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-a11y/install) or go to the [Plugins directory](https://app.netlify.com/plugins).
+
+For file-based installation, add the following lines to your `netlify.toml` file:
 
 ```toml
 [[plugins]]
@@ -52,12 +52,10 @@ package = "netlify-plugin-a11y"
   # debugMode = true # extra logging for plugin developers
 ```
 
-### Including this plugin in a project
+To complete file-based installation, from your project's base directory, use npm, yarn, or any other Node.js package manager to add the plugin to `devDependencies` in `package.json`.
 
-This plugin can be included via npm. Install it as a dependency for your project like so:
-
-```
-npm install --save netlify-plugin-a11y
+```bash
+npm install -D netlify-plugin-a11y
 ```
 
 ### Execution in Netlify
