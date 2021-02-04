@@ -36,7 +36,7 @@ const runPa11yOnFile = async function(htmlFilePath, build) {
 exports.generateFilePaths = async function({
   fileAndDirPaths, // array, mix of html and directories
   ignoreDirectories = [],
-  PUBLISH_DIR,
+  absolutePublishDir,
   testMode,
   debugMode
 }) {
@@ -46,7 +46,7 @@ exports.generateFilePaths = async function({
   );
   const htmlFilePaths = await Promise.all(
     fileAndDirPaths.map(fileAndDirPath =>
-      findHtmlFiles(`${PUBLISH_DIR}${fileAndDirPath}`, excludeDirGlobs)
+      findHtmlFiles(`${absolutePublishDir}${fileAndDirPath}`, excludeDirGlobs)
     )
   )
   return [].concat(...htmlFilePaths)

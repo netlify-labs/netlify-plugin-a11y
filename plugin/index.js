@@ -10,13 +10,13 @@ const pluginCore = require('./pluginCore');
 module.exports = {
     async onPostBuild({
       inputs: { checkPaths, ignoreDirectories, resultMode, debugMode },
-      constants: { PUBLISH_DIR },
-      utils: { build }
+      utils: { build },
+      netlifyConfig
     }) {
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
         ignoreDirectories: ignoreDirectories || [],
-        PUBLISH_DIR
+        absolutePublishDir: netlifyConfig.build.publish
       });
       if (debugMode) {
         console.log({ htmlFilePaths });
