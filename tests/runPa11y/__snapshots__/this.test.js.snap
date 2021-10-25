@@ -3,20 +3,16 @@
 exports[`runPa11y works 1`] = `
 Array [
   Object {
+    "code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H37",
+    "context": "<img src=\\"https://placekitten.com/200/300\\">",
     "documentTitle": "Document",
-    "issues": Array [
-      Object {
-        "code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H37",
-        "context": "<img src=\\"https://placekitten.com/200/300\\">",
-        "message": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
-        "runner": "htmlcs",
-        "runnerExtras": Object {},
-        "selector": "html > body > img",
-        "type": "error",
-        "typeCode": 1,
-      },
-    ],
-    "pageUrl": "file:///Users/swyx/Netlify/netlify-plugin-a11y/tests/runPa11y/publishDir/index.html",
+    "message": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
+    "pageUrl": "/Users/ej/projects/netlify-plugin-a11y/tests/runPa11y/publishDir/index.html",
+    "runner": "htmlcs",
+    "runnerExtras": Object {},
+    "selector": "html > body > img",
+    "type": "error",
+    "typeCode": 1,
   },
 ]
 `;

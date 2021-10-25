@@ -20,7 +20,7 @@ test("ignoreDirectories works including leading slash", async () => {
   const results = await pluginCore.generateFilePaths({
     fileAndDirPaths: ["/"],
     ignoreDirectories: ["/admin"],
-    PUBLISH_DIR,
+    absolutePublishDir: PUBLISH_DIR,
   });
   expect(pathInResults("publishDir/blog/post1.html", results)).toBe(true);
   expect(pathInResults("publishDir/about.html", results)).toBe(true);
@@ -32,7 +32,7 @@ test("ignoreDirectories works without leading slash", async () => {
   const results = await pluginCore.generateFilePaths({
     fileAndDirPaths: ["/"],
     ignoreDirectories: ["admin"],
-    PUBLISH_DIR,
+    absolutePublishDir: PUBLISH_DIR,
   });
   expect(pathInResults("publishDir/blog/post1.html", results)).toBe(true);
   expect(pathInResults("publishDir/about.html", results)).toBe(true);
