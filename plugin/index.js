@@ -28,43 +28,7 @@ module.exports = {
       });
 
       if (results.length) {
-        if (debugMode) {
-          console.log({ results });
-          // console.log(results);
-        }
-        if (resultMode === 'error') {
-          results.forEach((res) => {
-            console.error(
-              `[${chalk.cyan.bold(res.documentTitle)} (${path.relative(
-                process.cwd(),
-                res.pageUrl
-              )})] ${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
-                res.message
-              } (${chalk.cyan(res.context)})`
-            );
-          });
-          build.failBuild(
-            `${chalk.yellow(
-              results.length
-            )} accessibility issues found! Please fix.`
-          );
-        } else {
-          results.forEach((res) => {
-            console.warn(
-              `[${chalk.cyan.bold(res.documentTitle)} (${path.relative(
-                process.cwd(),
-                res.pageUrl
-              )})] ${chalk.magenta(res.type)} ${chalk.cyan(res.typeCode)}: ${
-                res.message
-              } (${chalk.cyan(res.context)})`
-            );
-          });
-          console.warn(
-            chalk.magenta(
-              `${results.length} accessibility issues found! Check the warnings.`
-            )
-          );
-        }
+        console.log(results);
       }
     }
 }

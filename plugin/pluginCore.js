@@ -1,28 +1,33 @@
-const { extname } = require('path')
-
 const pa11y = require('pa11y');
-const readdirp = require('readdirp')
+const { extname } = require('path')
 const { isDirectory, isFile } = require('path-type')
+const { results: cliReporter } = require('pa11y/lib/reporters/cli');
+const readdirp = require('readdirp')
+
+/**
+ * Filter-map. Like map, but skips undefined values.
+ *
+ * @param arr {Array}
+ * @param callback {Function}
+ * @returns {Array}
+ */
+ function fmap(arr, callback) {
+  return arr.reduce((accum, ...args) => {
+      let x = callback(...args);
+      if(x !== undefined) {
+          accum.push(x);
+      }
+      return accum;
+  }, []);
+}
 
 exports.runPa11y = async function({ htmlFilePaths, build, testMode, debugMode }) {
-  let results = await Promise.all(htmlFilePaths.map(htmlFilePath => runPa11yOnFile(htmlFilePath, build)));
-  results = results
-    .filter((res) => res.issues.length)
-    .map((res) =>
-      res.issues.map((issue) => ({
-        ...issue,
-        documentTitle: res.documentTitle,
-        pageUrl: res.pageUrl.slice(7)
-      }))
-    );
-  let flattenedResults = [];
-  results.forEach(
-    (res) => void (flattenedResults = flattenedResults.concat(res))
-  );
-  if (debugMode) {
-    console.log({ flattenedResults, results });
-  }
-  return flattenedResults;
+  let results = await Promise.all(fmap(htmlFilePaths, async htmlFilePath => {
+    const res = await runPa11yOnFile(htmlFilePath, build);
+    return res.issues.length > 0 ? cliReporter(res) : undefined
+  }));
+
+  return results.join('');
 };
 
 const runPa11yOnFile = async function(htmlFilePath, build) {
