@@ -56,7 +56,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
   if (await isDirectory(fileAndDirPath)) {
     const fileInfos = await readdirp.promise(fileAndDirPath, {
       fileFilter: '*.html',
-      directoryFilter
+      directoryFilter: !!directoryFilter.length ? directoryFilter : '*'
     })
     return fileInfos.map(({ fullPath }) => fullPath)
   }
