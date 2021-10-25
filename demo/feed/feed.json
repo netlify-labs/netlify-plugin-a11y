@@ -1,0 +1,20 @@
+{
+	"version": "https://jsonfeed.org/version/1.1",
+	"title": "netlify-plugin-a11y",
+	"language": "en",
+	"home_page_url": "https://example.com/",
+	"feed_url": "https://example.com/feed/feed.json",
+	"description": "A demo site to illustrate the funcionality of netlify-plugin-a11y.",
+	"author": {
+		"name": "Amberley Romo &amp; EJ Mason",
+		"url": "https://example.com/about-me/"
+	},
+	"items": [{
+			"id": "https://example.com/posts/2018-05-01/",
+			"url": "https://example.com/posts/2018-05-01/",
+			"title": "Would you get a load of these cats",
+			"content_html": "<figure>\n\t<img src=\"https://example.com/img/cats-570x720.png\" width=\"570\" height=\"720\" />\n\t<figcaption>\n\t\tThis image doesn't have an <code>alt</code> attribute.\n\t</figcaption>\n</figure>\n",
+			"date_published": "2018-05-01T00:00:00Z"
+		}
+	]
+}

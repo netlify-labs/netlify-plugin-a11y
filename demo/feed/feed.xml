@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>netlify-plugin-a11y</title>
+	<subtitle>A demo site to illustrate the funcionality of netlify-plugin-a11y.</subtitle>
+	
+	<link href="https://example.com/feed/feed.xml" rel="self"/>
+	<link href="https://example.com/"/>
+	<updated>2018-05-01T00:00:00Z</updated>
+	<id>https://example.com/</id>
+	<author>
+		<name>Amberley Romo &amp; EJ Mason</name>
+		<email>youremailaddress@example.com</email>
+	</author>
+	
+	<entry>
+		<title>Would you get a load of these cats</title>
+		<link href="https://example.com/posts/2018-05-01/"/>
+		<updated>2018-05-01T00:00:00Z</updated>
+		<id>https://example.com/posts/2018-05-01/</id>
+		<content type="html">&lt;figure&gt;
+	&lt;img src=&quot;https://example.com/img/cats-570x720.png&quot; width=&quot;570&quot; height=&quot;720&quot; /&gt;
+	&lt;figcaption&gt;
+		This image doesn&#39;t have an &lt;code&gt;alt&lt;/code&gt; attribute.
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+</content>
+	</entry>
+</feed>

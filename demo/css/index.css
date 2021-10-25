@@ -1,0 +1,424 @@
+/* Colors */
+:root {
+  --color-transparent: rgba(0, 0, 0, 0);
+  --color-black-default: #0e1e25;
+  --color-white: #ffffff;
+  --color-gray-darkest: #2e3c42;
+  --color-gray-darker: #646e73;
+  --color-gray-dark: #7e878b;
+  --color-gray-default: #a4aaad;
+  --color-gray-light: #eaebec;
+  --color-gray-lighter: #f5f5f5;
+  --color-gray-lightest: #f9fafa;
+  --color-teal-darkest: #0d544e;
+  --color-teal-darker: #15847b;
+  --color-teal-default: #00ad9f;
+  --color-teal-lighter: #00c7b6;
+  --color-teal-lightest: #c9eeea;
+  --color-blue-darkest: #0f456c;
+  --color-blue-darker: #146394;
+  --color-blue-default: #298fc2;
+  --color-blue-lighter: #46b6d8;
+  --color-blue-lightest: #bce4f1;
+  --color-gold-darkest: #66400f;
+  --color-gold-darker: #a46819;
+  --color-gold-default: #cc811e;
+  --color-gold-lighter: #ffad42;
+  --color-gold-lightest: #ffe4c2;
+  --color-red-darkest: #8e0b30;
+  --color-red-darker: #d32254;
+  --color-red-default: #f22c64;
+  --color-red-lighter: #fe7299;
+  --color-red-lightest: #fed7e2;
+  --color-purple-darkest: #5f1b51;
+  --color-purple-darker: #8c1773;
+  --color-purple-default: #bc6292;
+  --color-purple-lighter: #db95ba;
+  --color-purple-lightest: #f2d9e6;
+  --color-third-party-github: #151413;
+  --color-third-party-github-dark: #000000;
+  --color-third-party-gitlab: #e65528;
+  --color-third-party-gitlab-dark: #c43f17;
+  --color-third-party-bitbucket: #0047b3;
+  --color-third-party-bitbucket-dark: #003380;
+
+  /* Color Palette: Neutral colors */
+  --colorBlack: var(--color-black-default); /* #0e1e25 */
+  --colorBlackDarker: var(
+    --colorBlack
+  ); /* color only changes on dark theme, we add a light version to avoid an undefined variable, just in case! */
+  --colorGrayDarkest: var(--color-gray-darkest); /* #2e3c42 */
+  --colorGrayDarker: var(--color-gray-darker); /* #646e73 */
+  --colorGrayDark: var(--color-gray-dark); /* #7e878b */
+  --colorGray: var(--color-gray-default); /* #a4aaad */
+  --colorGrayLight: var(--color-gray-light); /* #eaebec */
+  --colorGrayLighter: var(--color-gray-lighter); /* #f5f5f5 */
+  --colorGrayLightest: var(--color-gray-lightest); /* #f9fafa */
+  --colorWhite: var(--color-white); /* #ffffff */
+
+  --colorListNeutral: colorBlack, colorBlackDarker, colorGrayDarkest, colorGrayDarker, colorGrayDark, colorGray,
+    colorGrayLight, colorGrayLighter, colorGrayLightest, colorWhite;
+
+  /* Color Palette: Primary colors (teal) */
+  --colorTealDarkest: var(--color-teal-darkest); /* #0d544e */
+  --colorTealDarker: var(--color-teal-darker); /* ##15847b */
+  --colorTeal: var(--color-teal-default); /* ##00ad9f */
+  --colorTealLighter: var(--color-teal-lighter); /* #00c7b6 */
+  --colorTealLightest: var(--color-teal-lightest); /* #c9eeea */
+
+  /* Color Palette: Primary colors (blue) */
+  --colorBlueDarkest: var(--color-blue-darkest); /* #0f456c */
+  --colorBlueDarker: var(--color-blue-darker); /* #146394 */
+  --colorBlue: var(--color-blue-default); /* #298fc2 */
+  --colorBlueLighter: var(--color-blue-lighter); /* #46b6d8 */
+  --colorBlueLightest: var(--color-blue-lightest); /* #bce4f1 */
+
+  /* Color Palette: Primary colors (gold) */
+  --colorGoldDarkest: var(--color-gold-darkest); /* #66400f */
+  --colorGoldDarker: var(--color-gold-darker); /* #a46819 */
+  --colorGold: var(--color-gold-default); /* #cc811e */
+  --colorGoldLighter: var(--color-gold-lighter); /* #ffad42 */
+  --colorGoldLightest: var(--color-gold-lightest); /* #ffe4c2 */
+
+  /* Color Palette: Primary colors (red) */
+  --colorRedDarkest: var(--color-red-darkest); /* #8e0b30 */
+  --colorRedDarker: var(--color-red-darker); /* #d32254 */
+  --colorRed: var(--color-red-default); /* #f22c64 */
+  --colorRedLighter: var(--color-red-lighter); /* #fe7299 */
+  --colorRedLightest: var(--color-red-lightest); /* #fed7e2 */
+
+  /* Color Palette: Secondary colors (purple) */
+  --colorPurpleDarkest: var(--color-purple-darkest); /* #5f1b51 */
+  --colorPurpleDarker: var(--color-purple-darker); /* #8c1773 */
+  --colorPurple: var(--color-purple-default); /* #bc6292 */
+  --colorPurpleLighter: var(--color-purple-lighter); /* #db95ba */
+  --colorPurpleLightest: var(--color-purple-lightest); /* #f2d9e6 */
+
+  --colorListPrimary: colorTealDarkest, colorTealDarker, colorTeal, colorTealLighter, colorTealLightest,
+    colorBlueDarkest, colorBlueDarker, colorBlue, colorBlueLighter, colorBlueLightest, colorGoldDarkest, colorGoldDarker,
+    colorGold, colorGoldLighter, colorGoldLightest, colorRedDarkest, colorRedDarker, colorRed, colorRedLighter,
+    colorRedLightest, colorPurpleDarkest, colorPurpleDarker, colorPurple, colorPurpleLighter, colorPurpleLightest;
+
+  /* Color Palette: Assorted */
+  --colorTransparent: var(--color-transparent);
+
+  /* Color Palette: Third party brand colors */
+  --colorThirdPartyGitHub: var(--color-third-party-github); /* #151413 */
+  --colorThirdPartyGitHubDark: var(--color-third-party-github-dark); /* #000000 */
+  --colorThirdPartyGitLab: var(--color-third-party-gitlab); /* #e65528 */
+  --colorThirdPartyGitLabDark: var(--color-third-party-gitlab-dark); /* #c43f17 */
+  --colorThirdPartyBitbucket: var(--color-third-party-bitbucket); /* #0047b3 */
+  --colorThirdPartyBitbucketDark: var(--color-third-party-bitbucket-dark); /* #003380 */
+  --colorListThirdParty: colorThirdPartyGitHub, colorThirdPartyGitHubDark, colorThirdPartyGitLab,
+    colorThirdPartyGitLabDark, colorThirdPartyBitbucket, colorThirdPartyBitbucketDark;
+  /* ⚠️ ⚠️ ⚠️ End of tokens imported from @netlify/netlify-design-tokens */
+
+  /*
+  ** Deploy, Builds and Edge handlers logs colors
+  ** Once design sets a custom palette we should
+  ** use hex and move variables to @netlify/netlify-design-tokens
+  */
+  --colorLogBrightBlack: rgb(135, 135, 135);
+  --colorLogRed: rgb(255, 40, 40);
+  --colorLogBrightRed: rgb(255, 85, 85);
+  --colorLogGreen: rgb(0, 187, 0);
+  --colorLogBrightGreen: rgb(0, 255, 0);
+  --colorLogYellow: rgb(187, 187, 0);
+  --colorLogBrightYellow: rgb(255, 255, 85);
+  --colorLogBlue: rgb(0, 134, 255);
+  --colorLogBrightBlue: rgb(100, 190, 255);
+  --colorLogMagenta: rgb(245, 0, 245);
+  --colorLogBrightMagenta: rgb(255, 85, 255);
+  --colorLogCyan: rgb(0, 187, 187);
+  --colorLogBrightCyan: rgb(85, 255, 255);
+  --colorLogWhite: rgb(187, 187, 187);
+  --colorLogBrightWhite: rgb(255, 255, 255);
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  display: grid;
+
+  font-family: -apple-system, system-ui, sans-serif;
+  font-size: 1.6rem;
+
+  grid-template-rows: auto 1fr auto;
+
+  margin: 0;
+  min-height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+
+  padding: 0;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+.content,
+.warning {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100rem;
+  width: 95%;
+}
+
+.tmpl-post {
+  display: grid;
+  grid-template-rows: auto 10fr auto;
+}
+
+.tmpl-post > .content {
+  padding-bottom: 4rem;
+}
+
+.pagination {
+  border-top: 1px dashed var(--colorGrayLight);
+}
+
+p:first-child {
+  margin-top: 0;
+}
+header {
+  border-bottom: 1px dashed var(--colorGrayLight);
+}
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+header + * {
+  margin-top: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p,
+.tmpl-post li,
+img {
+  max-width: 37.5em; /* 600px /16 */
+  max-width: 70ch;
+}
+p,
+.tmpl-post li {
+  line-height: 1.45;
+}
+a[href] {
+  color: var(--colorTealDarker);
+}
+a[href]:visited {
+  color: var(--colorTealDarkest);
+}
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
+    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier,
+    monospace;
+  line-height: 1.5;
+}
+pre {
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  padding: 1em;
+  margin: 0.5em 0;
+  background-color: #f6f6f6;
+}
+code {
+  word-break: break-all;
+}
+.highlight-line {
+  display: block;
+  padding: 0.125em 1em;
+  text-decoration: none; /* override del, ins, mark defaults */
+  color: inherit; /* override del, ins, mark defaults */
+}
+
+/* allow highlighting empty lines */
+.highlight-line:empty:before {
+  content: " ";
+}
+/* avoid double line breaks when using display: block; */
+.highlight-line + br {
+  display: none;
+}
+
+.highlight-line-isdir {
+  color: #b0b0b0;
+  background-color: #222;
+}
+.highlight-line-active {
+  background-color: #444;
+  background-color: hsla(0, 0%, 27%, 0.8);
+}
+.highlight-line-add {
+  background-color: #45844b;
+}
+.highlight-line-remove {
+  background-color: #902f2f;
+}
+
+/* Header */
+.home {
+  padding: 0 1rem;
+  float: left;
+  margin: 1.6rem 0; /* 16px /10 */
+  font-size: 1em; /* 16px /16 */
+}
+.home :link:not(:hover) {
+  text-decoration: none;
+}
+
+/* Nav */
+.nav {
+  padding: 0;
+  list-style: none;
+  float: left;
+  margin-left: 1em;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav-item-active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+  list-style: none;
+  padding: 0;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  counter-increment: start-from -1;
+  line-height: 1.8;
+}
+.postlist-item:before {
+  display: inline-block;
+  pointer-events: none;
+  content: "" counter(start-from, decimal-leading-zero) ". ";
+  line-height: 100%;
+  text-align: right;
+}
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--colorGrayDarker);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+.tmpl-home .postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+}
+
+/* Tags */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 0.75em; /* 12px /16 */
+  padding: 0.08333333333333em 0.3333333333333em; /* 1px 4px /12 */
+  margin-left: 0.6666666666667em; /* 8px /12 */
+  margin-top: 0.5em; /* 6px /12 */
+  margin-bottom: 0.5em; /* 6px /12 */
+  color: var(--colorGrayDark);
+  border: 1px solid var(--colorGray);
+  border-radius: 0.25em; /* 3px /12 */
+  text-decoration: none;
+  line-height: 1.8;
+}
+a[href].post-tag,
+a[href].post-tag:visited {
+  color: inherit;
+}
+a[href].post-tag:hover,
+a[href].post-tag:focus {
+  background-color: var(--colorGrayLight);
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* Warning */
+.warning {
+  border-radius: 4px;
+  background-color: var(--colorGoldLightest);
+  padding: 1em 0.625em; /* 16px 10px /16 */
+}
+
+.warning a[href] {
+  color: var(--colorBlueDarker);
+}
+.warning ol:only-child {
+  margin: 0;
+}
+
+/* Direct Links / Markdown Headers */
+.direct-link {
+  font-family: sans-serif;
+  text-decoration: none;
+  font-style: normal;
+  margin-left: 0.1em;
+}
+a[href].direct-link,
+a[href].direct-link:visited {
+  color: transparent;
+}
+a[href].direct-link:focus,
+a[href].direct-link:focus:visited,
+:hover > a[href].direct-link,
+:hover > a[href].direct-link:visited {
+  color: #aaa;
+}
