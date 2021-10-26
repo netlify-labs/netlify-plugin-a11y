@@ -3,40 +3,86 @@
 //   env: { SITE }
 // } = require('process');
 
-const chalk = require('chalk');
-const path = require('path');
 const pluginCore = require('./pluginCore');
 
-module.exports = {
-    async onPostBuild({
-      inputs: { checkPaths, ignoreDirectories, resultMode, debugMode, runners },
-      utils: { build },
-      netlifyConfig
-    }) {
-      const pa11yOpts = {
-        includeWarnings: resultMode === 'warn',
-        runners: runners || ['axe']
-      }
+const AXE = 'axe';
+const HTMLCS = 'htmlcs';
+const INSTALLED_RUNNERS = [AXE, HTMLCS];
 
-      const htmlFilePaths = await pluginCore.generateFilePaths({
-        fileAndDirPaths: checkPaths,
-        ignoreDirectories: ignoreDirectories || [],
-        absolutePublishDir: netlifyConfig.build.publish
-      });
-      if (debugMode) {
-        console.log({ htmlFilePaths });
-      }
-      
-      const { results, issueCount } = await pluginCore.runPa11y({
-        build,
-        debugMode,
-        htmlFilePaths,
-        pa11yOpts,
-      });
-      if (issueCount > 0) {
-        console.log(results);
-        build.failBuild(`Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information`);
-      }
+const DEFAULT_RUNNERS = [AXE];
+const DEFAULT_CHECK_PATHS = ['/'];
+const DEFAULT_RESULT_MODE = 'error';
+const DEFAULT_IGNORE_DIRECTORIES = [];
 
+const PA11Y_USER_AGENT = 'netlify-plugin-a11y';
+
+const isInvalidRunner = runners => (
+  (runners && !Array.isArray(runners) || !runners.every(val => INSTALLED_RUNNERS.includes(val)))
+);
+
+const getConfiguration = ({
+  constants: { PUBLISH_DIR },
+  inputs: { checkPaths, debugMode, ignoreDirectories, resultMode, runners }
+}) => {
+
+  runners = runners || DEFAULT_RUNNERS;
+
+  if (isInvalidRunner(runners)) {
+    throw new Error(`Invalid value for \`runners\` input. Runners must be ${AXE} or ${HTMLCS}`);
+  }
+  return {
+    absolutePublishDir: PUBLISH_DIR || process.env.PUBLISH_DIR,
+    checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
+    debugMode: debugMode || false,
+    ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
+    pa11yOpts: {
+      runners,
+      resultMode: resultMode || DEFAULT_RESULT_MODE,
+      userAgent: PA11Y_USER_AGENT,
     }
+  }
+
+}
+
+module.exports = {
+  async onPostBuild({
+    constants,
+    inputs,
+    utils: { build },
+  }) {
+
+    try {
+    const {
+      absolutePublishDir,
+      checkPaths,
+      debugMode,
+      ignoreDirectories,
+      pa11yOpts
+    } = getConfiguration({ constants, inputs })
+    const htmlFilePaths = await pluginCore.generateFilePaths({
+      absolutePublishDir,
+      fileAndDirPaths: checkPaths,
+      ignoreDirectories: ignoreDirectories,
+    });
+    if (debugMode) {
+      console.log({ htmlFilePaths });
+    }
+
+    const { results, issueCount } = await pluginCore.runPa11y({
+      build,
+      debugMode,
+      htmlFilePaths,
+      pa11yOpts,
+    });
+    if (issueCount > 0) {
+      console.log(results);
+      build.failBuild(`Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information`);
+    }
+
+  } catch(err) {
+    build.failBuild(err.message)
+  }
+
+
+  }
 }
