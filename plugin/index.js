@@ -33,7 +33,7 @@ module.exports = {
       pa11yOpts,
     });
     if (issueCount > 0) {
-      const postRunMsg = `Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information.`
+      const postRunMsg = `Pa11y found ${issueCount} accessibility violations on your site! Check the logs above for more information.`
       console.log(report);
       if (failWithIssues) {
         build.failBuild(postRunMsg)
