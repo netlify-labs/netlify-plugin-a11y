@@ -3,7 +3,7 @@
 exports[`runPa11y works 1`] = `
 Object {
   "issueCount": 1,
-  "results": "
+  "report": "
 [4mResults for URL: file:///Users/ej/projects/netlify-plugin-a11y/tests/runPa11y/publishDir/index.html[24m
 
 [31m • Error:[39m Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.
