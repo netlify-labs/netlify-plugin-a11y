@@ -4,6 +4,8 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('pa11y/lib/reporters/cli');
 const readdirp = require('readdirp')
 
+const EMPTY_ARRAY = []
+
 exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
   let issueCount = 0;
   const results = await Promise.all(htmlFilePaths.map(async path => {
@@ -20,8 +22,7 @@ exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
 
   return {
     issueCount,
-    report: results.filter(Boolean)
-      .join(''),
+    report: results.join(''),
   };
 };
 
@@ -55,11 +56,11 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 
   if (!(await isFile(fileAndDirPath))) {
     console.warn(`Folder ${fileAndDirPath} was provided in "checkPaths", but does not exist - it either indicates something went wrong with your build, or you can simply delete this folder from your "checkPaths" in netlify.toml`)
-    return []
+    return EMPTY_ARRAY
   }
 
   if (extname(fileAndDirPath) !== '.html') {
-    return []
+    return EMPTY_ARRAY
   }
 
   return [fileAndDirPath]
