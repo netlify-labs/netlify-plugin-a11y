@@ -3,13 +3,13 @@ inputs:
   - name: checkPaths
     default: ['/']
     required: false
-  - name: ignoreDirectories
-    required: false
-  - name: resultMode
-    default: error
-  - name: runners
-    default: ['axe']
   - name: debugMode
     default: false
+  - name: failWithIssues
+    default: true
+  - name: ignoreDirectories
+    required: false
+  - name: runners
+    default: ['axe']
   - name: testMode
     default: false

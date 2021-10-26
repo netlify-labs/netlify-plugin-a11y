@@ -15,7 +15,7 @@ module.exports = {
       debugMode,
       ignoreDirectories,
       pa11yOpts,
-      resultMode,
+      failWithIssues,
     } = getConfiguration({ constants, inputs })
     const htmlFilePaths = await pluginCore.generateFilePaths({
       absolutePublishDir,
@@ -35,7 +35,7 @@ module.exports = {
     if (issueCount > 0) {
       const postRunMsg = `Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information.`
       console.log(results);
-      if (resultMode === 'error') {
+      if (failWithIssues) {
         build.failBuild(postRunMsg)
       } else {
         console.warn(postRunMsg)
