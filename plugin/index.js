@@ -9,12 +9,13 @@ const pluginCore = require('./pluginCore');
 
 module.exports = {
     async onPostBuild({
-      inputs: { checkPaths, ignoreDirectories, resultMode, debugMode },
+      inputs: { checkPaths, ignoreDirectories, resultMode, debugMode, runners },
       utils: { build },
       netlifyConfig
     }) {
       const pa11yOpts = {
-        includeWarnings: resultMode === 'warn'
+        includeWarnings: resultMode === 'warn',
+        runners: runners || ['axe']
       }
 
       const htmlFilePaths = await pluginCore.generateFilePaths({
