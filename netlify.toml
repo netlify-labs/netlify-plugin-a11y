@@ -12,5 +12,6 @@
     # # optional config
     failWithIssues = false # true by default
 
+    standard = 'WCAG2A'
     # # Developer only
     # debugMode = true # extra logging for plugin developers

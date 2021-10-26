@@ -3,6 +3,7 @@ const HTMLCS = 'htmlcs';
 const INSTALLED_RUNNERS = [AXE, HTMLCS];
 
 const DEFAULT_RUNNERS = [AXE];
+const DEFAULT_STANDARD = 'WCAG2AA';
 const DEFAULT_CHECK_PATHS = ['/'];
 const DEFAULT_FAIL_WITH_ISSUES = true;
 const DEFAULT_IGNORE_DIRECTORIES = [];
@@ -15,7 +16,7 @@ const isInvalidRunner = runners => (
 
 const getConfiguration = ({
   constants: { PUBLISH_DIR },
-  inputs: { checkPaths, debugMode, ignoreDirectories, failWithIssues, runners }
+  inputs: { checkPaths, debugMode, ignoreDirectories, failWithIssues, runners, standard }
 }) => {
 
   runners = runners || DEFAULT_RUNNERS;
@@ -32,6 +33,7 @@ const getConfiguration = ({
     pa11yOpts: {
       runners,
       userAgent: PA11Y_USER_AGENT,
+      standard: standard || DEFAULT_STANDARD,
     }
   }
 }

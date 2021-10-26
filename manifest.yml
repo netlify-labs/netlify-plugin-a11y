@@ -11,5 +11,7 @@ inputs:
     required: false
   - name: runners
     default: ['axe']
+  - name: standard
+    default: 'WCAG2AA'
   - name: testMode
     default: false

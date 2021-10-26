@@ -26,7 +26,7 @@ module.exports = {
       console.log({ htmlFilePaths });
     }
 
-    const { results, issueCount } = await pluginCore.runPa11y({
+    const { report, issueCount } = await pluginCore.runPa11y({
       build,
       debugMode,
       htmlFilePaths,
@@ -34,7 +34,7 @@ module.exports = {
     });
     if (issueCount > 0) {
       const postRunMsg = `Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information.`
-      console.log(results);
+      console.log(report);
       if (failWithIssues) {
         build.failBuild(postRunMsg)
       } else {
