@@ -10,6 +10,7 @@ module.exports = {
 
     try {
     const {
+      absolutePublishDir,
       checkPaths,
       debugMode,
       ignoreDirectories,
