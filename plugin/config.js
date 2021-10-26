@@ -21,16 +21,16 @@ const getConfiguration = ({
   runners = runners || DEFAULT_RUNNERS;
 
   if (isInvalidRunner(runners)) {
-    throw new Error(`Invalid value for \`runners\` input. Runners must be ${AXE} or ${HTMLCS}`);
+    throw new Error(`Invalid value for \`runners\` input. Runners must be \`${AXE}\` or \`${HTMLCS}\`.`);
   }
   return {
     absolutePublishDir: PUBLISH_DIR || process.env.PUBLISH_DIR,
     checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
     debugMode: debugMode || false,
     ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
+    resultMode: resultMode || DEFAULT_RESULT_MODE,
     pa11yOpts: {
       runners,
-      resultMode: resultMode || DEFAULT_RESULT_MODE,
       userAgent: PA11Y_USER_AGENT,
     }
   }

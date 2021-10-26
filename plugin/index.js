@@ -14,7 +14,8 @@ module.exports = {
       checkPaths,
       debugMode,
       ignoreDirectories,
-      pa11yOpts
+      pa11yOpts,
+      resultMode,
     } = getConfiguration({ constants, inputs })
     const htmlFilePaths = await pluginCore.generateFilePaths({
       absolutePublishDir,
@@ -32,8 +33,13 @@ module.exports = {
       pa11yOpts,
     });
     if (issueCount > 0) {
+      const postRunMsg = `Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information.`
       console.log(results);
-      build.failBuild(`Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information`);
+      if (resultMode === 'error') {
+        build.failBuild(postRunMsg)
+      } else {
+        console.warn(postRunMsg)
+      }
     }
 
   } catch(err) {
