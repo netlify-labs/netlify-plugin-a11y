@@ -13,6 +13,10 @@ module.exports = {
       utils: { build },
       netlifyConfig
     }) {
+      const pa11yOpts = {
+        includeWarnings: resultMode === 'warn'
+      }
+
       const htmlFilePaths = await pluginCore.generateFilePaths({
         fileAndDirPaths: checkPaths,
         ignoreDirectories: ignoreDirectories || [],
@@ -21,14 +25,19 @@ module.exports = {
       if (debugMode) {
         console.log({ htmlFilePaths });
       }
-      const results = await pluginCore.runPa11y({
-        htmlFilePaths,
-        build,
-        debugMode
-      });
-
-      if (results.length) {
-        console.log(results);
+      
+      try {
+        const results = await pluginCore.runPa11y({
+          htmlFilePaths,
+          pa11yOpts,
+          debugMode
+        });
+        if (results.length) {
+          console.log(results);
+        }
+      } catch(error) {
+        build.failBuild('pa11y failed', { error })
       }
+
     }
 }

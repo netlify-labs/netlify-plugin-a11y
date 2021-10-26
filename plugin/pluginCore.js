@@ -4,39 +4,20 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('pa11y/lib/reporters/cli');
 const readdirp = require('readdirp')
 
-/**
- * Filter-map. Like map, but skips undefined values.
- *
- * @param arr {Array}
- * @param callback {Function}
- * @returns {Array}
- */
- function fmap(arr, callback) {
-  return arr.reduce((accum, ...args) => {
-      let x = callback(...args);
-      if(x !== undefined) {
-          accum.push(x);
-      }
-      return accum;
-  }, []);
-}
+const EMPTY_ARRAY = []
 
-exports.runPa11y = async function({ htmlFilePaths, build, testMode, debugMode }) {
-  let results = await Promise.all(fmap(htmlFilePaths, async htmlFilePath => {
-    const res = await runPa11yOnFile(htmlFilePath, build);
-    return res.issues.length > 0 ? cliReporter(res) : undefined
+exports.runPa11y = async function({ htmlFilePaths, pa11yOpts }) {
+  let results = await Promise.all(htmlFilePaths.flatMap(async path => {
+    try {
+      const res = await pa11y(path, pa11yOpts);
+      return res.issues.length > 0 ? cliReporter(res) : EMPTY_ARRAY
+    } catch(error) {
+      build.failBuild('pa11y failed', { error })
+    }
   }));
-
+  
   return results.join('');
 };
-
-const runPa11yOnFile = async function(htmlFilePath, build) {
-  try {
-    return await pa11y(htmlFilePath)
-  } catch (error) {
-    build.failBuild(`pa11y failed`, { error })
-  }
-}
 
 exports.generateFilePaths = async function({
   fileAndDirPaths, // array, mix of html and directories
