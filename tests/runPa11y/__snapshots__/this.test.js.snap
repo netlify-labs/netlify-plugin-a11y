@@ -1,18 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`runPa11y works 1`] = `
-Array [
-  Object {
-    "code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H37",
-    "context": "<img src=\\"https://placekitten.com/200/300\\">",
-    "documentTitle": "Document",
-    "message": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
-    "pageUrl": "/Users/ej/projects/netlify-plugin-a11y/tests/runPa11y/publishDir/index.html",
-    "runner": "htmlcs",
-    "runnerExtras": Object {},
-    "selector": "html > body > img",
-    "type": "error",
-    "typeCode": 1,
-  },
-]
+Object {
+  "issueCount": 1,
+  "results": "
+[4mResults for URL: file:///Users/ej/projects/netlify-plugin-a11y/tests/runPa11y/publishDir/index.html[24m
+
+[31m • Error:[39m Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.
+   [90m├── WCAG2AA.Principle1.Guideline1_1.1_1_1.H37[39m
+   [90m├── html > body > img[39m
+   [90m└── <img src=\\"https://placekitten.com/200/300\\">[39m
+
+[31m1 Errors[39m
+",
+}
 `;

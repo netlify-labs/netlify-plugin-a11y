@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generateFilePaths works 1`] = `Array []`;
+exports[`generateFilePaths works 1`] = `
+Array [
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/blog/post1.html",
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/blog/post2.html",
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/about.html",
+]
+`;

@@ -7,7 +7,7 @@ const pluginCore = require('../../plugin/pluginCore.js');
 test('generateFilePaths works', async () => {
   const results = await pluginCore.generateFilePaths({
     fileAndDirPaths: ['/blog', '/about.html'],
-    PUBLISH_DIR
+    absolutePublishDir: PUBLISH_DIR,
   });
   expect(results).toMatchSnapshot();
 });
