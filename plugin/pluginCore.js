@@ -4,19 +4,25 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('pa11y/lib/reporters/cli');
 const readdirp = require('readdirp')
 
-const EMPTY_ARRAY = []
-
-exports.runPa11y = async function({ htmlFilePaths, pa11yOpts }) {
-  let results = await Promise.all(htmlFilePaths.flatMap(async path => {
+exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts = {}, build }) {
+  let issueCount = 0;
+  const results = await Promise.all(htmlFilePaths.map(async path => {
     try {
       const res = await pa11y(path, pa11yOpts);
-      return res.issues.length > 0 ? cliReporter(res) : EMPTY_ARRAY
-    } catch(error) {
+      if (res.issues && res.issues.length) {
+        issueCount += res.issues.length;
+        return cliReporter(res)
+      }
+    } catch (error) {
       build.failBuild('pa11y failed', { error })
     }
-  }));
-  
-  return results.join('');
+  }))
+
+  return {
+    issueCount,
+    results: results.filter(Boolean)
+      .join(''),
+  };
 };
 
 exports.generateFilePaths = async function({

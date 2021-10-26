@@ -27,17 +27,15 @@ module.exports = {
         console.log({ htmlFilePaths });
       }
       
-      try {
-        const results = await pluginCore.runPa11y({
-          htmlFilePaths,
-          pa11yOpts,
-          debugMode
-        });
-        if (results.length) {
-          console.log(results);
-        }
-      } catch(error) {
-        build.failBuild('pa11y failed', { error })
+      const { results, issueCount } = await pluginCore.runPa11y({
+        build,
+        debugMode,
+        htmlFilePaths,
+        pa11yOpts,
+      });
+      if (issueCount > 0) {
+        console.log(results);
+        build.failBuild(`Pa11y found ${issueCount} accessibility issues with your site! Check the logs above for more information`);
       }
 
     }
