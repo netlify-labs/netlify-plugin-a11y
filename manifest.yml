@@ -8,9 +8,8 @@ inputs:
   - name: failWithIssues
     default: true
   - name: ignoreDirectories
+    default: []
     required: false
-  - name: runners
-    default: ['axe']
   - name: standard
     default: 'WCAG2AA'
   - name: testMode

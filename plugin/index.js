@@ -19,8 +19,8 @@ module.exports = {
     } = getConfiguration({ constants, inputs })
     const htmlFilePaths = await pluginCore.generateFilePaths({
       absolutePublishDir,
+      ignoreDirectories,
       fileAndDirPaths: checkPaths,
-      ignoreDirectories: ignoreDirectories,
     });
     if (debugMode) {
       console.log({ htmlFilePaths });
