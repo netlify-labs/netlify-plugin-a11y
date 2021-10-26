@@ -4,10 +4,9 @@
   "description": "",
   "main": "plugin/index.js",
   "dependencies": {
-    "chalk": "^3.0.0",
     "pa11y": "^6.0.1",
     "path-type": "^4.0.0",
-    "readdirp": "^3.4.0"
+    "readdirp": "^3.6.0"
   },
   "scripts": {
     "build": "netlify build",
@@ -24,12 +23,12 @@
   "author": "swyx <swyx@dontemail.me>",
   "license": "MIT",
   "engines": {
-    "node": ">=8.12.0"
+    "node": ">=12.13.0"
   },
   "devDependencies": {
-    "auto-changelog": "^1.16.2",
-    "gh-release": "^3.5.0",
-    "jest": "^25.1.0"
+    "auto-changelog": "^2.3.0",
+    "gh-release": "^6.0.1",
+    "jest": "^27.3.1"
   },
   "repository": "https://github.com/sw-yx/netlify-plugin-a11y",
   "bugs": {
