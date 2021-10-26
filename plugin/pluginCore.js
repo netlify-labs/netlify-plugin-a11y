@@ -64,14 +64,3 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 
   return [fileAndDirPath]
 }
-
-//  res:
-//    [ { code: 'WCAG2AA.Principle1.Guideline1_1.1_1_1.H37',
-//        type: 'error',
-//        typeCode: 1,
-//        message:
-//         'Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.',
-//        context: '<img src="https://placekitten.com/200/300">',
-//        selector: 'html > body > img',
-//        runner: 'htmlcs',
-//        runnerExtras: {} } ] }

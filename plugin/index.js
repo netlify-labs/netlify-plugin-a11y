@@ -1,12 +1,5 @@
-// const {
-//   cwd,
-//   env: { SITE }
-// } = require('process');
-
-
 const { getConfiguration } = require('./config')
 const pluginCore = require('./pluginCore');
-
 
 module.exports = {
   async onPostBuild({
