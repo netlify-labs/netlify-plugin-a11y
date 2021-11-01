@@ -1,7 +1,7 @@
 {
   "name": "netlify-plugin-a11y",
   "version": "0.0.12",
-  "description": "",
+  "description": "Check for accessibility errors on critical pages of your Netlify website.",
   "main": "plugin/index.js",
   "dependencies": {
     "pa11y": "^6.0.1",
