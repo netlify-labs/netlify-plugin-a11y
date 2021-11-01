@@ -2,14 +2,14 @@
   "name": "netlify-plugin-a11y",
   "version": "0.0.12",
   "description": "Check for accessibility errors on critical pages of your Netlify website.",
-  "main": "plugin/index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "pa11y": "^6.0.1",
     "path-type": "^4.0.0",
     "readdirp": "^3.6.0"
   },
   "scripts": {
-    "build": "netlify build",
+    "build": "tsc",
     "test": "jest",
     "test:staged": "CI=true jest --env=jsdom --findRelatedTests",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",

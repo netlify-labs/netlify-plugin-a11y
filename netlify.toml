@@ -4,7 +4,7 @@
   publish = "demo"
 
 [[plugins]]
-  package = "./plugin/index.js"
+  package = "./src/index.js"
   [plugins.inputs]
     # required config
     checkPaths = ['/']
