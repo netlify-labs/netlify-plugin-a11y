@@ -11,6 +11,7 @@
   "scripts": {
     "build": "netlify build",
     "test": "jest",
+    "test:staged": "CI=true jest --env=jsdom --findRelatedTests",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "prepublishOnly": "git push && git push --tags && gh-release",
     "prepare": "husky install"
@@ -46,6 +47,7 @@
   },
   "lint-staged": {
     "*.js": [
+      "npm run test:staged",
       "eslint --cache --fix",
       "prettier --write"
     ]
