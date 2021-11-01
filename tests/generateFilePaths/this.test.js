@@ -1,4 +1,3 @@
-const fs = require('fs')
 const path = require('path')
 
 const PUBLISH_DIR = path.join(__dirname, 'publishDir')
