@@ -7,6 +7,9 @@ const { results: cliReporter } = require('pa11y/lib/reporters/cli')
 const readdirp = require('readdirp')
 
 const EMPTY_ARRAY = []
+const ASTERISK = '*'
+const HTML_EXT = '.html'
+const GLOB_HTML = '*.html'
 
 exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
 	let issueCount = 0
@@ -47,11 +50,17 @@ exports.generateFilePaths = async function ({
 
 const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 	if (await isDirectory(fileAndDirPath)) {
-		const fileInfos = await readdirp.promise(fileAndDirPath, {
-			fileFilter: '*.html',
-			directoryFilter: !!directoryFilter.length ? directoryFilter : '*',
+		const filePaths = []
+		const stream = readdirp(fileAndDirPath, {
+			fileFilter: GLOB_HTML,
+			directoryFilter: !!directoryFilter.length ? directoryFilter : ASTERISK,
 		})
-		return fileInfos.map(({ fullPath }) => fullPath)
+
+		for await (const { fullPath } of stream) {
+			filePaths.push(fullPath)
+		}
+
+		return filePaths
 	}
 
 	if (!(await isFile(fileAndDirPath))) {
@@ -61,7 +70,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		return EMPTY_ARRAY
 	}
 
-	if (extname(fileAndDirPath) !== '.html') {
+	if (extname(fileAndDirPath) !== HTML_EXT) {
 		return EMPTY_ARRAY
 	}
 
