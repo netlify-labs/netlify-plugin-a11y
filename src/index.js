@@ -1,3 +1,5 @@
+// @ts-check
+
 const { getConfiguration } = require('./config')
 const pluginCore = require('./pluginCore')
 
@@ -17,7 +19,6 @@ module.exports = {
 
 			const { report, issueCount } = await pluginCore.runPa11y({
 				build,
-				debugMode,
 				htmlFilePaths,
 				pa11yOpts,
 			})

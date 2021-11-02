@@ -1,3 +1,5 @@
+// @ts-check
+
 const DEFAULT_CHECK_PATHS = ['/']
 const DEFAULT_FAIL_WITH_ISSUES = true
 const DEFAULT_IGNORE_DIRECTORIES = []

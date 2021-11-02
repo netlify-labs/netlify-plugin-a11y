@@ -1,3 +1,5 @@
+// @ts-check
+
 const pa11y = require('pa11y')
 const { extname } = require('path')
 const { isDirectory, isFile } = require('path-type')
@@ -32,8 +34,6 @@ exports.generateFilePaths = async function ({
 	fileAndDirPaths, // array, mix of html and directories
 	ignoreDirectories,
 	absolutePublishDir,
-	testMode,
-	debugMode,
 }) {
 	const excludeDirGlobs = ignoreDirectories.map(
 		// add ! and strip leading slash
