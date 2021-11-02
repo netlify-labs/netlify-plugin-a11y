@@ -2,7 +2,7 @@ const path = require('path')
 
 const PUBLISH_DIR = path.join(__dirname, 'publishDir')
 // actual test
-const pluginCore = require('../../plugin/pluginCore.js')
+const pluginCore = require('../../src/pluginCore')
 test('generateFilePaths works', async () => {
 	const results = await pluginCore.generateFilePaths({
 		absolutePublishDir: PUBLISH_DIR,

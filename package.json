@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "test:staged": "CI=true jest --env=jsdom --findRelatedTests",
+    "test:staged": "CI=true jest --findRelatedTests",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "prepublishOnly": "git push && git push --tags && gh-release",
     "prepare": "husky install"
