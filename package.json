@@ -17,7 +17,6 @@
     "test": "jest",
     "test:staged": "CI=true jest --findRelatedTests",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
-    "prepublishOnly": "git push && git push --tags && gh-release",
     "prepare": "husky install && npm run build"
   },
   "keywords": [
@@ -39,7 +38,6 @@
     "auto-changelog": "^2.3.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
-    "gh-release": "^6.0.1",
     "husky": "^7.0.0",
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
