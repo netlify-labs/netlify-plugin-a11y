@@ -8,16 +8,18 @@
     "manifest.yml"
   ],
   "dependencies": {
-    "pa11y": "^6.0.1",
+    "pa11y": "^6.1.0",
     "path-type": "^4.0.0",
     "readdirp": "^3.6.0"
   },
   "scripts": {
     "build": "tsc",
+    "watch": "tsc --watch",
     "test": "jest",
     "test:staged": "CI=true jest --findRelatedTests",
-    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
-    "prepare": "husky install && npm run build"
+    "clean": "rimraf lib",
+    "prepare": "husky install",
+    "prepublishOnly": "npm ci && npm test && npm run clean && npm run build"
   },
   "keywords": [
     "netlify",
@@ -34,14 +36,15 @@
     "node": ">=12.13.0"
   },
   "devDependencies": {
-    "@netlify/eslint-config-node": "^3.3.4",
+    "@netlify/eslint-config-node": "^3.3.6",
     "auto-changelog": "^2.3.0",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.4.4"
   },
   "repository": "https://github.com/netlify-labs/netlify-plugin-a11y",
