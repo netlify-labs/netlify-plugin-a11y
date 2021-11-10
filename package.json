@@ -10,6 +10,7 @@
   "dependencies": {
     "pa11y": "^6.1.0",
     "path-type": "^4.0.0",
+    "picocolors": "^1.0.0",
     "readdirp": "^3.6.0"
   },
   "scripts": {
