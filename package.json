@@ -8,7 +8,7 @@
     "manifest.yml"
   ],
   "dependencies": {
-    "pa11y": "^6.0.1",
+    "pa11y": "^6.1.0",
     "path-type": "^4.0.0",
     "readdirp": "^3.6.0"
   },
@@ -36,11 +36,11 @@
     "node": ">=12.13.0"
   },
   "devDependencies": {
-    "@netlify/eslint-config-node": "^3.3.4",
+    "@netlify/eslint-config-node": "^3.3.6",
     "auto-changelog": "^2.3.0",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
