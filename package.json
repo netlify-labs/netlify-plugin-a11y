@@ -14,10 +14,12 @@
   },
   "scripts": {
     "build": "tsc",
+    "watch": "tsc --watch",
     "test": "jest",
     "test:staged": "CI=true jest --findRelatedTests",
-    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
-    "prepare": "husky install && npm run build"
+    "clean": "rimraf lib",
+    "prepare": "husky install",
+    "prepublishOnly": "npm ci && npm test && npm run clean && npm run build"
   },
   "keywords": [
     "netlify",
@@ -42,6 +44,7 @@
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.4.4"
   },
   "repository": "https://github.com/netlify-labs/netlify-plugin-a11y",
