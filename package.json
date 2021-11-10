@@ -18,7 +18,7 @@
     "test": "jest",
     "test:staged": "CI=true jest --findRelatedTests",
     "clean": "rimraf lib",
-    "prepare": "husky install",
+    "prepare": "husky install && npm run build",
     "prepublishOnly": "npm ci && npm test && npm run clean && npm run build"
   },
   "keywords": [
