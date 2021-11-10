@@ -37,9 +37,12 @@ module.exports = {
  * @param {string} report
  */
 function generatePostrunMessage(issueCount, report) {
+	// Only print a line between the report and the summary
+	// if the report has any contents.
+	const spacer = report.length > 0 ? '\n' : ''
 	const humanReadableCount = issueCount === 0 ? 'No' : issueCount
 	const summary = `${humanReadableCount} accessibility violations found! ${
 		issueCount > 0 ? 'Check the logs above for more information.' : ''
 	}`
-	return report + '\n' + pico.magenta(summary)
+	return report + spacer + pico.magenta(summary)
 }
