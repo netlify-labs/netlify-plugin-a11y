@@ -1,23 +1,50 @@
 # netlify-plugin-a11y
 
-Run your critical pages through [pa11y](https://github.com/pa11y/pa11y) and fail build if accessibility failures are found.
+Check for accessibility issues on critical pages of your Netlify website.
 
 ## Demo
 
-The demo site is a Gatsby blog that has been modified to have some inaccessible elements: https://netlify-plugin-a11y.netlify.com/
+The demo site is an Eleventy blog containing some pages that have accessibility issues: https://netlify-plugin-a11y-demo.netlify.com/
 
-- the [Hello World](https://netlify-plugin-a11y.netlify.com/hello-world/) page has an image with no `alt` text
-- the [Second Post](https://netlify-plugin-a11y.netlify.com/my-second-post/) page has a form with no submit button, and an input with no label.
-
-You can see the impact of the plugin in the deploy logs of this demo site: https://app.netlify.com/sites/netlify-plugin-a11y/deploys. By default, the plugin is set to error on failure:
-
-
-![image](https://user-images.githubusercontent.com/6764957/77147207-226b8600-6a63-11ea-91b2-2de449ef6682.png)
+- the "go home" link on [the 404 page](https://netlify-plugin-a11y-demo.netlify.app/404.html) has insufficient color contrast.
+- the cat photo on [the blog post](https://netlify-plugin-a11y-demo.netlify.app/404.html) doesn't have an `alt` attribute.
+- the textarea on [the contact page](https://netlify-plugin-a11y-demo.netlify.app/contact-me/) is missing a proper label
 
 
-But if that is too drastic, you can switch to `resultMode = "warn"` so that builds don't fail:
+The build log for the demo site looks like this:
 
-![image](https://user-images.githubusercontent.com/6764957/77147811-8b073280-6a64-11ea-834d-6b872e543e23.png)
+![](./assets/plugin-a11y-log.png)
+<details>
+	<summary>Text copy of the log screenshot</summary>
+
+``` bash
+ Results for URL: file:///opt/build/repo/demo/404.html
+1:28:11 PM:  • Error: ARIA hidden element must not contain focusable elements (https://dequeuniversity.com/rules/axe/4.3/aria-hidden-focus?application=axeAPI)
+1:28:11 PM:    ├── aria-hidden-focus
+1:28:11 PM:    ├── #content-not-found. > a
+1:28:11 PM:    └── <a class="direct-link" href="#content-not-found." aria-hidden="true">#</a>
+1:28:11 PM:  • Error: Elements must have sufficient color contrast (https://dequeuniversity.com/rules/axe/4.3/color-contrast?application=axeAPI)
+1:28:11 PM:    ├── color-contrast
+1:28:11 PM:    ├── html > body > main > p > a
+1:28:11 PM: Creating deploy upload records
+1:28:11 PM:    └── <a href="/" style="color:#aaa">home</a>
+1:28:11 PM: 2 Errors
+1:28:11 PM: Results for URL: file:///opt/build/repo/demo/posts/2018-05-01/index.html
+1:28:11 PM:  • Error: Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
+1:28:11 PM:    ├── image-alt
+1:28:11 PM:    ├── html > body > main > div:nth-child(2) > figure > img
+1:28:11 PM:    └── <img src="/img/cats-570x720.png" width="570" height="720">
+1:28:11 PM: 1 Errors
+1:28:11 PM: Results for URL: file:///opt/build/repo/demo/contact-me/index.html
+1:28:11 PM:  • Error: Form elements must have labels (https://dequeuniversity.com/rules/axe/4.3/label?application=axeAPI)
+1:28:11 PM:    ├── label
+1:28:11 PM:    ├── html > body > main > div:nth-child(2) > form > textarea
+1:28:11 PM:    └── <textarea height="auto" rows="10" width="100%" style="width: 100%"></textarea>
+1:28:11 PM: Starting post processing
+1:28:11 PM: 1 Errors
+1:28:11 PM: 4 accessibility violations found! Check the logs above for more information
+```
+</details>
 
 
 ## Usage
@@ -32,17 +59,17 @@ package = "netlify-plugin-a11y"
 
   # all inputs are optional, we just show you the defaults below
   [plugins.inputs]
-  
+
   # required config
   checkPaths = ['/'] # you can give an array of directories or paths to html files, that you want to run a11y checks on
 
-  ## Another checkPaths Example 
+  ## Another checkPaths Example
   checkPaths = [
     '/blog',
     '/about.html',
     '/super/specific/route/index.html',
   ]
-  
+
   # # optional config
   # ignoreDirectories = ['/admin']  # explicitly ignore these directories
 
