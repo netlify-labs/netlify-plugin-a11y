@@ -10,12 +10,11 @@ const PA11Y_USER_AGENT = 'netlify-plugin-a11y'
 
 const getConfiguration = ({
 	constants: { PUBLISH_DIR },
-	inputs: { checkPaths, debugMode, ignoreDirectories, failWithIssues, standard },
+	inputs: { checkPaths, ignoreDirectories, failWithIssues, standard },
 }) => {
 	return {
 		absolutePublishDir: PUBLISH_DIR || process.env.PUBLISH_DIR,
 		checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
-		debugMode: debugMode || false,
 		ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
 		failWithIssues: failWithIssues !== undefined ? failWithIssues : DEFAULT_FAIL_WITH_ISSUES,
 		pa11yOpts: {
