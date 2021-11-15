@@ -3,8 +3,6 @@ inputs:
   - name: checkPaths
     default: ['/']
     required: false
-  - name: debugMode
-    default: false
   - name: failWithIssues
     default: true
   - name: ignoreDirectories
@@ -12,5 +10,3 @@ inputs:
     required: false
   - name: standard
     default: 'WCAG2AA'
-  - name: testMode
-    default: false
