@@ -96,7 +96,7 @@ If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inpu
 | `checkPaths`        	| An array of strings indicating which pages of your site to check.            	| Any directories or html files in your project 	| `['/']`       	|
 | `failWithIssues`    	| A boolean indicating whether the build should fail if a11y issues are found. 	| `true` or `false`                             	| `true`        	|
 | `ignoreDirectories` 	| An array of directories that *should not* be checked for a11y issues.        	| Any directories within your project           	| `[]`          	|
-| `standard`          	| The WCAG standard level against which pages are checked.                     	| `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        	| `'WCAGAA'`    	|
+| `wcagLevel`          	| The WCAG standard level against which pages are checked.                     	| `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        	| `'WCAGAA'`    	|
 
 Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
