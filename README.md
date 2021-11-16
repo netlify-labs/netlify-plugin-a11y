@@ -79,7 +79,7 @@ Next, you'll need to add the `@netlify/plugin-a11y` to the plugins section of yo
 If you want to use the plugin's default settings (check **all** pages of your site for violations of WCAG 2.1 level AA; fail the netlify build if issues are found), this is all you need to do. If you want to change the way the plugin behaves, read on to the next section.
 
 ## Configuration
-If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inputs]]` field to change how the plugin behaves. This table outlines the inputs the plugin accepts.
+If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inputs]]` field to change how the plugin behaves. This table outlines the inputs the plugin accepts. All of them are optional.
 
 
 | Input name          	| Description                                                                  	| Possible values                               	| Default value 	|
@@ -89,13 +89,13 @@ If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inpu
 | `ignoreDirectories` 	| An array of directories that *should not* be checked for a11y issues.        	| Any directories within your project           	| `[]`          	|
 | `standard`          	| The WCAG standard level against which pages are checked.                     	| `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        	| `'WCAGAA'`    	|
 
-Here's how these inputs could be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior.
+Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
 ``` toml
 [[plugins]]
   package = "@netlify/plugin-a11y"
   [plugins.inputs]
-    # Check all HTML files in this project
+    # Check all HTML files in this project (the default behavior)
     checkPaths = ['/']
     # Do not fail the build if a11y issues are found
     failWithIssues = false
