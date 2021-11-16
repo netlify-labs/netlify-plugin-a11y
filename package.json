@@ -37,7 +37,7 @@
     "node": ">=12.13.0"
   },
   "devDependencies": {
-    "@netlify/eslint-config-node": "^3.3.6",
+    "@netlify/eslint-config-node": "^3.3.7",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
