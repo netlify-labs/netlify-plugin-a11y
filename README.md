@@ -13,11 +13,10 @@ The demo site is an Eleventy blog containing some pages that have accessibility 
 - the textarea on [the contact page](https://netlify-plugin-a11y-demo.netlify.app/contact-me/) is missing a proper label
 
 
-The build log for the demo site looks like this:
-
-![](./assets/plugin-a11y-log.png)
+This is a screenshot of the build log for the demo site:
+![Screenshot of demo site build log.](./assets/plugin-a11y-log.png)
 <details>
-	<summary>Text copy of the log screenshot</summary>
+	<summary>Text from screnshot of demo site build log</summary>
 
 ``` bash
  Results for URL: file:///opt/build/repo/demo/404.html
