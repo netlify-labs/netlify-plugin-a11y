@@ -38,12 +38,15 @@ exports.generateFilePaths = async function ({
 	ignoreDirectories,
 	absolutePublishDir,
 }) {
-	const excludeDirGlobs = ignoreDirectories.map(
-		// add ! and strip leading slash
-		(dir) => `!${dir.replace(/^\/+/, '')}`,
-	)
+	const directoryFilter =
+		ignoreDirectories.length === 0
+			? ASTERISK
+			: ignoreDirectories.map(
+					// add ! and strip leading slash
+					(dir) => `!${dir.replace(/^\/+/, '')}`,
+			  )
 	const htmlFilePaths = await Promise.all(
-		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${absolutePublishDir}${fileAndDirPath}`, excludeDirGlobs)),
+		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${absolutePublishDir}${fileAndDirPath}`, directoryFilter)),
 	)
 	return [].concat(...htmlFilePaths)
 }
@@ -52,8 +55,8 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 	if (await isDirectory(fileAndDirPath)) {
 		const filePaths = []
 		const stream = readdirp(fileAndDirPath, {
+			directoryFilter,
 			fileFilter: GLOB_HTML,
-			directoryFilter: !!directoryFilter.length ? directoryFilter : ASTERISK,
 		})
 
 		for await (const { fullPath } of stream) {
