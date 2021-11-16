@@ -77,6 +77,33 @@ Next, you'll need to add the `@netlify/plugin-a11y` to the plugins section of yo
 
 If you want to use the plugin's default settings (check **all** pages of your site for violations of WCAG 2.1 level AA; fail the netlify build if issues are found), this is all you need to do. If you want to change the way the plugin behaves, read on to the next section.
 
+## Configuration
+If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inputs]]` field to change how the plugin behaves. This table outlines the inputs the plugin accepts.
+
+
+| Input name          	| Description                                                                  	| Possible values                               	| Default value 	|
+|---------------------	|------------------------------------------------------------------------------	|-----------------------------------------------	|---------------	|
+| `checkPaths`        	| An array of strings indicating which pages of your site to check.            	| Any directories or html files in your project 	| `['/']`       	|
+| `failWithIssues`    	| A boolean indicating whether the build should fail if a11y issues are found. 	| `true` or `false`                             	| `true`        	|
+| `ignoreDirectories` 	| An array of directories that *should not* be checked for a11y issues.        	| Any directories within your project           	| `[]`          	|
+| `standard`          	| The WCAG standard level against which pages are checked.                     	| `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        	| `'WCAGAA'`    	|
+
+Here's how these inputs could be used in `netlify.toml`.
+
+``` toml
+[[plugins]]
+  package = "@netlify/plugin-a11y"
+  [plugins.inputs]
+    checkPaths = ['/']
+    failWithIssues = false
+    ignoreDirectories = ['/admin']
+    standard = 'WCAGAAA'
+```
+
+With these inputs, the plugin will
+- check all html pages of the site
+- except those in the `/admin` directory
+- for WCAG 2.1 level AAA violations
 ### Execution in Netlify
 
 Once installed and configured, the plugin will automatically run in the Netlify CI during its specified Netlify Build lifecycle event.
