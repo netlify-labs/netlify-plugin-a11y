@@ -111,5 +111,5 @@ Here's how these inputs can be used in `netlify.toml`, with comments to explain 
     # Ignore all HTML files in `/admin`
     ignoreDirectories = ['/admin']
     # Perform a11y check against WCAG 2.1 AAA
-    standard = 'WCAGAAA'
+    wcagLevel = 'WCAGAAA'
 ```
