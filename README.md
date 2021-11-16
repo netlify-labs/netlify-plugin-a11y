@@ -2,6 +2,8 @@
 
 Check for accessibility issues on critical pages of your Netlify website.
 
+## What does this plugin do?
+By default, it checks **all** your site's pages for violations of WCAG 2.1 level AA, and fail the site build if any a11y issues are found.
 ## Demo
 
 The demo site is an Eleventy blog containing some pages that have accessibility issues: https://netlify-plugin-a11y-demo.netlify.com/
@@ -47,43 +49,33 @@ The build log for the demo site looks like this:
 </details>
 
 
-## Usage
+## Installation via the Netlify UI
+To install the plugin in the Netlify UI, use this [direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-a11y/install) or go to the [plugins directory](https://app.netlify.com/plugins).
 
-To install the plugin in the Netlify UI, use this [direct in-app installation link](https://app.netlify.com/plugins/netlify-plugin-a11y/install) or go to the [Plugins directory](https://app.netlify.com/plugins).
+When installed this way, the plugin follows its default behavior, which is to check **all** your site's pages for violations of WCAG 2.1 level AA, and fail the site build if any a11y issues are found.
 
-For file-based installation, add the following lines to your `netlify.toml` file:
+To change the plugin's behavior, you'll want to install it throigh your `netlify.toml` file.
+
+## Installation via the `netlify.toml` file
+First, you must be insalled as a dev dependency. If you're using NPM to manage your packages, run the following:
+``` bash
+npm install --save-dev @netlify/plugin-a11y
+```
+
+If you're using Yarn, run the following:
+``` bash
+yarn add --dev @netlify/plugin-a11y
+```
+
+Next, you'll need to add the `@netlify/plugin-a11y` to the plugins section of your `netlify.toml` file.
 
 ```toml
 [[plugins]]
-package = "netlify-plugin-a11y"
-
-  # all inputs are optional, we just show you the defaults below
-  [plugins.inputs]
-
-  # required config
-  checkPaths = ['/'] # you can give an array of directories or paths to html files, that you want to run a11y checks on
-
-  ## Another checkPaths Example
-  checkPaths = [
-    '/blog',
-    '/about.html',
-    '/super/specific/route/index.html',
-  ]
-
-  # # optional config
-  # ignoreDirectories = ['/admin']  # explicitly ignore these directories
-
-  # resultMode = "warn" # is "error" by default
-
-  # # Developer only
-  # debugMode = true # extra logging for plugin developers
+  package = "@netlify/plugin-a11y"
 ```
+⚠️ In `.toml` files, whitespace is important! Make sure `package` is indented two spaces.
 
-To complete file-based installation, from your project's base directory, use npm, yarn, or any other Node.js package manager to add the plugin to `devDependencies` in `package.json`.
-
-```bash
-npm install -D netlify-plugin-a11y
-```
+If you want to use the plugin's default settings (check **all** pages of your site for violations of WCAG 2.1 level AA; fail the netlify build if issues are found), this is all you need to do. If you want to change the way the plugin behaves, read on to the next section.
 
 ### Execution in Netlify
 
