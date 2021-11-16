@@ -2,14 +2,16 @@
 
 Check for accessibility issues on critical pages of your Netlify website.
 
+🚧 **Note:** This plugin is pre-release software. Until version 1.0.0 is released, its API could change at any time. If you experience unexpected behavior while using this plugin, check [the changelog](./CHANGELOG.md) for any changes you might have missed, and please feel free to report an issue or submit a pull request about any issues you encounter.
+
 ## What does this plugin do?
-This plugin uses The [`pa11y`](https://github.com/pa11y/pa11y) (which in turn uses [`axe-core`](https://github.com/dequelabs/axe-core)) to check your Netlify project for accessibility issues.
+This plugin uses [`pa11y`](https://github.com/pa11y/pa11y) (which in turn uses [`axe-core`](https://github.com/dequelabs/axe-core)) to check your Netlify project for accessibility issues. 
 
 If issues are found, the plugin generates a report which provides:
-- the page on which the issue was found
-- a description of the issue with a link to the relevant [Deque University rule](https://dequeuniversity.com/rules/axe/latest)
+- the path to the HTML file in which the error was found
+- a description of the error with a link to the relevant [Deque University rule](https://dequeuniversity.com/rules/axe/latest)
 - the name of the error within the aXe API
-- the path to the the relevant DOM element
+- the path to the the DOM element associated with the error
 - the DOM element itself
 - the total number of issues on the page
 - the sum of *all* issues across *all* pages that were checked
@@ -23,8 +25,8 @@ The demo site is an Eleventy blog containing some pages that have accessibility 
 - the cat photo on [the blog post](https://netlify-plugin-a11y-demo.netlify.app/404.html) doesn't have an `alt` attribute.
 - the textarea on [the contact page](https://netlify-plugin-a11y-demo.netlify.app/contact-me/) is missing a proper label
 
+With these errors, the logs for the demo look like this:
 
-This is a screenshot of the build log for the demo site:
 ![Screenshot of demo site build log.](./assets/plugin-a11y-log.png)
 <details>
 	<summary>Text from screnshot of demo site build log</summary>
@@ -66,7 +68,7 @@ When installed this way, the plugin follows its default behavior, which is to ch
 To change the plugin's behavior, you'll want to install it throigh your `netlify.toml` file.
 
 ## Installation via the `netlify.toml` file
-First, you must be insalled as a dev dependency. If you're using NPM to manage your packages, run the following:
+First, install the plugin as a dev dependency. If you're using NPM to manage your packages, run the following:
 ``` bash
 npm install --save-dev @netlify/plugin-a11y
 ```
@@ -76,7 +78,7 @@ If you're using Yarn, run the following:
 yarn add --dev @netlify/plugin-a11y
 ```
 
-Next, you'll need to add the `@netlify/plugin-a11y` to the plugins section of your `netlify.toml` file.
+Next, add `@netlify/plugin-a11y` to the plugins section of your `netlify.toml` file.
 
 ```toml
 [[plugins]]
@@ -90,12 +92,12 @@ If you want to use the plugin's default settings (check **all** pages of your si
 If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inputs]]` field to change how the plugin behaves. This table outlines the inputs the plugin accepts. All of them are optional.
 
 
-| Input name          	| Description                                                                  	| Possible values                               	| Default value 	|
-|---------------------	|------------------------------------------------------------------------------	|-----------------------------------------------	|---------------	|
-| `checkPaths`        	| An array of strings indicating which pages of your site to check.            	| Any directories or html files in your project 	| `['/']`       	|
-| `failWithIssues`    	| A boolean indicating whether the build should fail if a11y issues are found. 	| `true` or `false`                             	| `true`        	|
-| `ignoreDirectories` 	| An array of directories that *should not* be checked for a11y issues.        	| Any directories within your project           	| `[]`          	|
-| `wcagLevel`          	| The WCAG standard level against which pages are checked.                     	| `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        	| `'WCAGAA'`    	|
+| Input name          | Description                                              | Value type       | Possible values                               | Default value |
+|---------------------|----------------------------------------------------------|------------------|-----------------------------------------------|---------------|
+| `checkPaths`        | Indicates which pages of your site to check              | Array of strings | Any directories or HTML files in your project | `['/']`       |
+| `failWithIssues`    | Whether the build should fail if a11y issues are found   | Boolean          | `true` or `false`                             | `true`        |
+| `ignoreDirectories` | Directories that *should not* be checked for a11y issues | Array of strings | Any directories in your project               | `[]`          |
+| `wcagLevel`         | The WCAG standard level against which pages are checked  | String           | `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        | `'WCAGAA'`    |
 
 Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
