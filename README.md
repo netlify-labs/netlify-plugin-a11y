@@ -29,32 +29,31 @@ This is a screenshot of the build log for the demo site:
 <details>
 	<summary>Text from screnshot of demo site build log</summary>
 
-``` bash
- Results for URL: file:///opt/build/repo/demo/404.html
-1:28:11 PM:  • Error: ARIA hidden element must not contain focusable elements (https://dequeuniversity.com/rules/axe/4.3/aria-hidden-focus?application=axeAPI)
-1:28:11 PM:    ├── aria-hidden-focus
-1:28:11 PM:    ├── #content-not-found. > a
-1:28:11 PM:    └── <a class="direct-link" href="#content-not-found." aria-hidden="true">#</a>
-1:28:11 PM:  • Error: Elements must have sufficient color contrast (https://dequeuniversity.com/rules/axe/4.3/color-contrast?application=axeAPI)
-1:28:11 PM:    ├── color-contrast
-1:28:11 PM:    ├── html > body > main > p > a
-1:28:11 PM: Creating deploy upload records
-1:28:11 PM:    └── <a href="/" style="color:#aaa">home</a>
-1:28:11 PM: 2 Errors
-1:28:11 PM: Results for URL: file:///opt/build/repo/demo/posts/2018-05-01/index.html
-1:28:11 PM:  • Error: Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
-1:28:11 PM:    ├── image-alt
-1:28:11 PM:    ├── html > body > main > div:nth-child(2) > figure > img
-1:28:11 PM:    └── <img src="/img/cats-570x720.png" width="570" height="720">
-1:28:11 PM: 1 Errors
-1:28:11 PM: Results for URL: file:///opt/build/repo/demo/contact-me/index.html
-1:28:11 PM:  • Error: Form elements must have labels (https://dequeuniversity.com/rules/axe/4.3/label?application=axeAPI)
-1:28:11 PM:    ├── label
-1:28:11 PM:    ├── html > body > main > div:nth-child(2) > form > textarea
-1:28:11 PM:    └── <textarea height="auto" rows="10" width="100%" style="width: 100%"></textarea>
-1:28:11 PM: Starting post processing
-1:28:11 PM: 1 Errors
-1:28:11 PM: 4 accessibility violations found! Check the logs above for more information
+```
+9:49:36 PM: Results for URL: file:///opt/build/repo/demo/404.html
+9:49:36 PM:  • Error: ARIA hidden element must not contain focusable elements (https://dequeuniversity.com/rules/axe/4.3/aria-hidden-focus?application=axeAPI)
+9:49:36 PM:    ├── aria-hidden-focus
+9:49:36 PM:    ├── #content-not-found. > a
+9:49:36 PM:    └── <a class="direct-link" href="#content-not-found." aria-hidden="true">#</a>
+9:49:36 PM:  • Error: Elements must have sufficient color contrast (https://dequeuniversity.com/rules/axe/4.3/color-contrast?application=axeAPI)
+9:49:36 PM:    ├── color-contrast
+9:49:36 PM:    ├── html > body > main > p > a
+9:49:36 PM:    └── <a href="/" style="color:#aaa">home</a>
+9:49:36 PM: 2 Errors
+9:49:36 PM: Results for URL: file:///opt/build/repo/demo/posts/2018-05-01/index.html
+9:49:36 PM:  • Error: Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
+9:49:36 PM:    ├── image-alt
+9:49:36 PM:    ├── html > body > main > div:nth-child(2) > figure > img
+9:49:36 PM:    └── <img src="/img/cats-570x720.png" width="570" height="720">
+9:49:36 PM: Creating deploy upload records
+9:49:36 PM: 1 Errors
+9:49:36 PM: Results for URL: file:///opt/build/repo/demo/contact-me/index.html
+9:49:36 PM:  • Error: Form elements must have labels (https://dequeuniversity.com/rules/axe/4.3/label?application=axeAPI)
+9:49:36 PM:    ├── label
+9:49:36 PM:    ├── html > body > main > div:nth-child(2) > form > textarea
+9:49:36 PM:    └── <textarea height="auto" rows="10" width="100%" style="width: 100%"></textarea>
+9:49:36 PM: 1 Errors
+9:49:36 PM: 4 accessibility issues found! Check the logs for more information.
 ```
 </details>
 
