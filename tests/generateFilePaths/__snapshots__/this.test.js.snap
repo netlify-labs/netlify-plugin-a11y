@@ -2,8 +2,8 @@
 
 exports[`generateFilePaths works 1`] = `
 Array [
-  "/Users/ej/projects/plugin-a11y/tests/generateFilePaths/publishDir/blog/post1.html",
-  "/Users/ej/projects/plugin-a11y/tests/generateFilePaths/publishDir/blog/post2.html",
-  "/Users/ej/projects/plugin-a11y/tests/generateFilePaths/publishDir/about.html",
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/blog/post1.html",
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/blog/post2.html",
+  "/Users/ej/projects/netlify-plugin-a11y/tests/generateFilePaths/publishDir/about.html",
 ]
 `;
