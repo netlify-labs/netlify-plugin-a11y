@@ -2,11 +2,13 @@ name: netlify-plugin-a11y
 inputs:
   - name: checkPaths
     default: ['/']
-    required: false
+    description: Array of paths (folders or html files) that the plugin should check. Defaults to root (['/']), which checks every html file on your site.
   - name: failWithIssues
     default: true
+    description: Whether the build should faul if the plugin finds a11y issues. Defaults to true.
   - name: ignoreDirectories
     default: []
-    required: false
+    description: Array of directories whose pages the plugin should ignore when checking for a11y issues. Defaults to [].
   - name: standard
     default: 'WCAG2AA'
+    description: The level of WCAG 2.1 against which to check site pages. Defaults to 'WCAGAA'; can also be 'WCAGA' or 'WCAGAAA'.
