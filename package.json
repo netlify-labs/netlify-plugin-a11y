@@ -1,6 +1,6 @@
 {
   "name": "@netlify/plugin-a11y",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Check for accessibility errors on critical pages of your Netlify website.",
   "main": "lib/index.js",
   "files": [
