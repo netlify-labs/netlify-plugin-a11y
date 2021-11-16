@@ -2,6 +2,8 @@
 
 Check for accessibility issues on critical pages of your Netlify website.
 
+🚧 **Note:** This plugin is pre-release software. Until version 1.0.0 is released, its API could change at any time. If you experience unexpected behavior while using this plugin, check [the changelog](./CHANGELOG.md) for any changes you might have missed, and please feel free to report an issue or submit a pull request about any issues you encounter.
+
 ## What does this plugin do?
 This plugin uses [`pa11y`](https://github.com/pa11y/pa11y) (which in turn uses [`axe-core`](https://github.com/dequelabs/axe-core)) to check your Netlify project for accessibility issues. 
 
