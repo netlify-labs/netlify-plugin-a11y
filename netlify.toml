@@ -6,11 +6,5 @@
 [[plugins]]
   package = "./lib/index.js"
   [plugins.inputs]
-    # required config
     checkPaths = ['/']
-
-    # # optional config
     failWithIssues = false # true by default
-
-    # # Developer only
-    # debugMode = true # extra logging for plugin developers
