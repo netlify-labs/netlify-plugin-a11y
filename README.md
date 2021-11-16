@@ -5,7 +5,16 @@ Check for accessibility issues on critical pages of your Netlify website.
 ## What does this plugin do?
 This plugin uses The [`pa11y`](https://github.com/pa11y/pa11y) (which in turn uses [`axe-core`](https://github.com/dequelabs/axe-core)) to check your Netlify project for accessibility issues.
 
-By default, it checks **all** your site's pages for violations of WCAG 2.1 level AA, and fail the site build if any a11y issues are found.
+If issues are found, the plugin generates a report which provides:
+- the page on which the issue was found
+- a description of the issue with a link to the relevant [Deque University rule](https://dequeuniversity.com/rules/axe/latest)
+- the name of the error within the aXe API
+- the path to the the relevant DOM element
+- the DOM element itself
+- the total number of issues on the page
+- the sum of *all* issues across *all* pages that were checked
+
+By default, the plugin checks **all** your site's pages for violations of WCAG 2.1 level AA, and fail the site build if any a11y issues are found.
 ## Demo
 
 The demo site is an Eleventy blog containing some pages that have accessibility issues: https://netlify-plugin-a11y-demo.netlify.com/
