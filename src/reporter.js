@@ -1,4 +1,11 @@
+/**
+ * This reporter is adapted from the CLI reporter built into the pa11y library,
+ * with some small differences for performance reasons.
+ *
+ * @see https://github.com/pa11y/pa11y/blob/6.1.1/lib/reporters/cli.js
+ */
 // @ts-check
+
 'use strict'
 
 const { cyan, green, gray, red, underline, yellow } = require('picocolors')
