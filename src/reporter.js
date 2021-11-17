@@ -1,3 +1,4 @@
+// @ts-check
 'use strict'
 
 const { cyan, green, gray, red, underline, yellow } = require('picocolors')
@@ -7,27 +8,23 @@ const EMPTY_SPACE = ' '
 const NEWLINE_LITERAL = '\n'
 
 const rootFilePath = 'file://' + process.cwd()
-const reporter = {}
-
-// Pa11y version support
-reporter.supports = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
 
 // Helper strings for use in reporter methods
-const typeStarts = {
+const typeIndicators = {
 	error: red(' • Error:'),
 	notice: cyan(' • Notice:'),
 	unknown: gray(' •'),
 	warning: yellow(' • Warning:'),
 }
 
-function generateReadableIssue(issue) {
+function renderIssue(issue) {
 	const code = issue.code
 	const selector = issue.selector.replace(DUPLICATE_WHITESPACE_EXP, EMPTY_SPACE)
 	const context = issue.context ? issue.context.replace(DUPLICATE_WHITESPACE_EXP, EMPTY_SPACE) : '[no context]'
 
 	return cleanWhitespace(`
 
-	${typeStarts[issue.type]} ${issue.message}
+	${typeIndicators[issue.type]} ${issue.message}
 		${gray(`├── ${code}`)}
 		${gray(`├── ${selector}`)}
 		${gray(`└── ${context}`)}
@@ -35,7 +32,7 @@ function generateReadableIssue(issue) {
 }
 
 // Output formatted results
-function generateReadableResults(results) {
+function renderResults(results) {
 	const relativeFilePath = results.pageUrl.replace(rootFilePath, '.')
 	if (results.issues.length) {
 		const totals = {
@@ -47,7 +44,7 @@ function generateReadableResults(results) {
 		const summary = []
 
 		for (const issue of results.issues) {
-			issues.push(generateReadableIssue(issue))
+			issues.push(renderIssue(issue))
 			totals[issue.type] = totals[issue.type] + 1
 		}
 
@@ -85,6 +82,11 @@ function pluralize(noun, count) {
 	return count === 1 ? noun : noun + 's'
 }
 
-reporter.results = generateReadableResults
+const reporter = {}
+
+// Pa11y version support
+reporter.supports = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
+
+reporter.results = renderResults
 
 module.exports = reporter
