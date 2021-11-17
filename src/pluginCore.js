@@ -3,7 +3,7 @@
 const pa11y = require('pa11y')
 const { extname } = require('path')
 const { isDirectory, isFile } = require('path-type')
-const { results: cliReporter } = require('pa11y/lib/reporters/cli')
+const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
 
 const EMPTY_ARRAY = []
