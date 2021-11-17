@@ -10,6 +10,9 @@
 
 const { cyan, green, gray, red, underline, yellow } = require('picocolors')
 
+// Pa11y version support
+const PA11Y_SUPPORTS = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
+
 const DUPLICATE_WHITESPACE_EXP = /\s+/g
 const EMPTY_SPACE = ' '
 const NEWLINE_LITERAL = '\n'
@@ -17,6 +20,7 @@ const NEWLINE_LITERAL = '\n'
 const rootFilePath = 'file://' + process.cwd()
 
 // Helper strings for use in reporter methods
+const start = cyan(' >')
 const typeIndicators = {
 	error: red(' • Error:'),
 	notice: cyan(' • Notice:'),
@@ -79,6 +83,37 @@ function renderResults(results) {
 	`)
 }
 
+// Output the welcome message once Pa11y begins testing
+function renderBegin() {
+	return cleanWhitespace(`
+		${cyan(underline('Welcome to Pa11y'))}
+	`)
+}
+
+// Output debug messages
+function renderDebug(message) {
+	message = `Debug: ${message}`
+	return cleanWhitespace(`
+		${start} ${gray(message)}
+	`)
+}
+
+// Output information messages
+function renderInfo(message) {
+	return cleanWhitespace(`
+		${start} ${message}
+	`)
+}
+
+function renderError(message) {
+	if (!/^error:/i.test(message)) {
+		message = `Error: ${message}`
+	}
+	return cleanWhitespace(`
+		${red(message)}
+	`)
+}
+
 // Clean whitespace from output. This function is used to keep
 // the reporter code a little cleaner
 function cleanWhitespace(string) {
@@ -89,11 +124,11 @@ function pluralize(noun, count) {
 	return count === 1 ? noun : noun + 's'
 }
 
-const reporter = {}
-
-// Pa11y version support
-reporter.supports = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
-
-reporter.results = renderResults
-
-module.exports = reporter
+module.exports = {
+	begin: renderBegin,
+	debug: renderDebug,
+	info: renderInfo,
+	error: renderError,
+	results: renderResults,
+	supports: PA11Y_SUPPORTS,
+}
