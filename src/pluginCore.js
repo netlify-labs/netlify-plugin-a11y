@@ -1,7 +1,7 @@
 // @ts-check
 
 const pa11y = require('pa11y')
-const { extname } = require('path')
+const { extname, join } = require('path')
 const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
@@ -59,8 +59,8 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 			fileFilter: GLOB_HTML,
 		})
 
-		for await (const { fullPath } of stream) {
-			filePaths.push(fullPath)
+		for await (const { path } of stream) {
+			filePaths.push(join(fileAndDirPath, path))
 		}
 
 		return filePaths
