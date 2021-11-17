@@ -13,7 +13,7 @@ const getConfiguration = ({
 	inputs: { checkPaths, ignoreDirectories, failWithIssues, wcagLevel },
 }) => {
 	return {
-		absolutePublishDir: PUBLISH_DIR || process.env.PUBLISH_DIR,
+		publishDir: PUBLISH_DIR || process.env.PUBLISH_DIR,
 		checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
 		ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
 		failWithIssues: failWithIssues !== undefined ? failWithIssues : DEFAULT_FAIL_WITH_ISSUES,

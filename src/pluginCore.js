@@ -1,7 +1,7 @@
 // @ts-check
 
 const pa11y = require('pa11y')
-const { extname } = require('path')
+const { extname, join } = require('path')
 const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
@@ -36,7 +36,7 @@ exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
 exports.generateFilePaths = async function ({
 	fileAndDirPaths, // array, mix of html and directories
 	ignoreDirectories,
-	absolutePublishDir,
+	publishDir,
 }) {
 	const directoryFilter =
 		ignoreDirectories.length === 0
@@ -46,7 +46,7 @@ exports.generateFilePaths = async function ({
 					(dir) => `!${dir.replace(/^\/+/, '')}`,
 			  )
 	const htmlFilePaths = await Promise.all(
-		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${absolutePublishDir}${fileAndDirPath}`, directoryFilter)),
+		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${publishDir}${fileAndDirPath}`, directoryFilter)),
 	)
 	return [].concat(...htmlFilePaths)
 }
@@ -59,8 +59,8 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 			fileFilter: GLOB_HTML,
 		})
 
-		for await (const { fullPath } of stream) {
-			filePaths.push(fullPath)
+		for await (const { path } of stream) {
+			filePaths.push(join(fileAndDirPath, path))
 		}
 
 		return filePaths
