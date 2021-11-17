@@ -36,9 +36,9 @@ function renderIssue(issue) {
 	return cleanWhitespace(`
 
 	${typeIndicators[issue.type]} ${issue.message}
-		${gray(`├── ${code}`)}
-		${gray(`├── ${selector}`)}
-		${gray(`└── ${context}`)}
+		${gray(` ├── ${code}`)}
+		${gray(` ├── ${selector}`)}
+		${gray(` └── ${context}`)}
 	`)
 }
 
