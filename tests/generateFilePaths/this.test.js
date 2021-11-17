@@ -7,7 +7,7 @@ const publishDir = path.relative(process.cwd(), PUBLISH_DIR)
 const pluginCore = require('../../src/pluginCore')
 test('generateFilePaths works', async () => {
 	const results = await pluginCore.generateFilePaths({
-		absolutePublishDir: publishDir,
+		publishDir: publishDir,
 		fileAndDirPaths: ['/blog', '/about.html'],
 		ignoreDirectories: [],
 	})
@@ -22,7 +22,7 @@ test('ignoreDirectories works including leading slash', async () => {
 	const results = await pluginCore.generateFilePaths({
 		fileAndDirPaths: ['/'],
 		ignoreDirectories: ['/admin'],
-		absolutePublishDir: publishDir,
+		publishDir: publishDir,
 	})
 	expect(pathInResults('publishDir/blog/post1.html', results)).toBe(true)
 	expect(pathInResults('publishDir/about.html', results)).toBe(true)
@@ -34,7 +34,7 @@ test('ignoreDirectories works without leading slash', async () => {
 	const results = await pluginCore.generateFilePaths({
 		fileAndDirPaths: ['/'],
 		ignoreDirectories: ['admin'],
-		absolutePublishDir: publishDir,
+		publishDir: publishDir,
 	})
 	expect(pathInResults('publishDir/blog/post1.html', results)).toBe(true)
 	expect(pathInResults('publishDir/about.html', results)).toBe(true)

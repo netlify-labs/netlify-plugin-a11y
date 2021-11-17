@@ -7,12 +7,12 @@ const pico = require('picocolors')
 module.exports = {
 	async onPostBuild({ constants, inputs, utils: { build } }) {
 		try {
-			const { absolutePublishDir, checkPaths, ignoreDirectories, pa11yOpts, failWithIssues } = getConfiguration({
+			const { publishDir, checkPaths, ignoreDirectories, pa11yOpts, failWithIssues } = getConfiguration({
 				constants,
 				inputs,
 			})
 			const htmlFilePaths = await pluginCore.generateFilePaths({
-				absolutePublishDir,
+				publishDir,
 				ignoreDirectories,
 				fileAndDirPaths: checkPaths,
 			})

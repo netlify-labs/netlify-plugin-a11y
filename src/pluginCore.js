@@ -36,7 +36,7 @@ exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
 exports.generateFilePaths = async function ({
 	fileAndDirPaths, // array, mix of html and directories
 	ignoreDirectories,
-	absolutePublishDir,
+	publishDir,
 }) {
 	const directoryFilter =
 		ignoreDirectories.length === 0
@@ -46,7 +46,7 @@ exports.generateFilePaths = async function ({
 					(dir) => `!${dir.replace(/^\/+/, '')}`,
 			  )
 	const htmlFilePaths = await Promise.all(
-		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${absolutePublishDir}${fileAndDirPath}`, directoryFilter)),
+		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${publishDir}${fileAndDirPath}`, directoryFilter)),
 	)
 	return [].concat(...htmlFilePaths)
 }
