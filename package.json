@@ -35,7 +35,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=12"
   },
   "devDependencies": {
     "@netlify/eslint-config-node": "^3.3.7",
