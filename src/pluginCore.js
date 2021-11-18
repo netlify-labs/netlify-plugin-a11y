@@ -5,14 +5,17 @@ const { extname, join } = require('path')
 const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
+const { getPa11yOpts } = require('./config')
 
 const EMPTY_ARRAY = []
 const ASTERISK = '*'
 const HTML_EXT = '.html'
 const GLOB_HTML = '*.html'
 
-exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
+exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
+	const pa11yOpts = await getPa11yOpts(wcagLevel)
 	let issueCount = 0
+
 	const results = await Promise.all(
 		htmlFilePaths.map(async (path) => {
 			try {
@@ -26,6 +29,8 @@ exports.runPa11y = async function ({ htmlFilePaths, pa11yOpts, build }) {
 			}
 		}),
 	)
+
+	await pa11yOpts.browser.close()
 
 	return {
 		issueCount,
