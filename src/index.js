@@ -7,7 +7,7 @@ const pico = require('picocolors')
 module.exports = {
 	async onPostBuild({ constants, inputs, utils: { build } }) {
 		try {
-			const { publishDir, checkPaths, ignoreDirectories, pa11yOpts, failWithIssues } = getConfiguration({
+			const { publishDir, checkPaths, ignoreDirectories, pa11yOpts, failWithIssues } = await getConfiguration({
 				constants,
 				inputs,
 			})
