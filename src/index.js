@@ -1,7 +1,7 @@
 // @ts-check
 
 const { getConfiguration } = require('./config')
-const pluginCore = require('./pluginCore')
+const { generateFilePaths, runPa11y } = require('./pluginCore')
 const pico = require('picocolors')
 
 module.exports = {
@@ -11,13 +11,13 @@ module.exports = {
 				constants,
 				inputs,
 			})
-			const htmlFilePaths = await pluginCore.generateFilePaths({
+			const htmlFilePaths = await generateFilePaths({
 				publishDir,
 				ignoreDirectories,
 				fileAndDirPaths: checkPaths,
 			})
 
-			const { report, issueCount } = await pluginCore.runPa11y({
+			const { report, issueCount } = await runPa11y({
 				build,
 				htmlFilePaths,
 				wcagLevel,
