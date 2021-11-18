@@ -73,7 +73,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 
 	if (!(await isFile(fileAndDirPath))) {
 		console.warn(
-			`Folder ${fileAndDirPath} was provided in "checkPaths", but does not exist - it either indicates something went wrong with your build, or you can simply delete this folder from your "checkPaths" in netlify.toml`,
+			`Path ${fileAndDirPath} was provided in "checkPaths", but does not exist. This could indicate a problem with your build. If you want, you can simply delete this path from your "checkPaths" key in netlify.toml`,
 		)
 		return EMPTY_ARRAY
 	}
