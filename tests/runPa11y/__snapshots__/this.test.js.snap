@@ -6,8 +6,8 @@ Object {
   "report": "
 [4mResults for file: ./tests/runPa11y/publishDir/index.html[24m
 
-[31m • Error:[39m Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.
-[90m ├── WCAG2AA.Principle1.Guideline1_1.1_1_1.H37[39m
+[31m • Error:[39m Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
+[90m ├── image-alt[39m
 [90m ├── html > body > img[39m
 [90m └── <img src=\\"https://placekitten.com/200/300\\">[39m
 
