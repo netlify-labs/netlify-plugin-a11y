@@ -20,7 +20,7 @@ exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
 		htmlFilePaths.map(async (path) => {
 			try {
 				const res = await pa11y(path, pa11yOpts)
-				if (res.issues && res.issues.length) {
+				if (res.issues.length) {
 					issueCount += res.issues.length
 					return cliReporter(res)
 				}
