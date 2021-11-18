@@ -16,7 +16,7 @@ If issues are found, the plugin generates a report which provides:
 - the total number of issues on the page
 - the sum of *all* issues across *all* pages that were checked
 
-By default, the plugin checks **all** your site's pages for violations of WCAG 2.1 level AA, and fail the site build if any a11y issues are found.
+By default, the plugin checks **all** your site's pages for violations of WCAG 2.1 level AA, and fails the site build if any a11y issues are found.
 ## Demo
 
 The demo site is an Eleventy blog containing some pages that have accessibility issues: https://netlify-plugin-a11y-demo.netlify.com/
@@ -97,7 +97,7 @@ If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inpu
 | `checkPaths`        | Indicates which pages of your site to check              | Array of strings | Any directories or HTML files in your project | `['/']`       |
 | `failWithIssues`    | Whether the build should fail if a11y issues are found   | Boolean          | `true` or `false`                             | `true`        |
 | `ignoreDirectories` | Directories that *should not* be checked for a11y issues | Array of strings | Any directories in your project               | `[]`          |
-| `wcagLevel`         | The WCAG standard level against which pages are checked  | String           | `'WCAGA'` or `'WCAGAA'` or `'WCAGAAA'`        | `'WCAGAA'`    |
+| `wcagLevel`         | The WCAG standard level against which pages are checked  | String           | `'WCAG2A'` or `'WCAGA2A'` or `'WCAG2AAA'`     | `'WCAG2AA'`   |
 
 Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
@@ -112,5 +112,5 @@ Here's how these inputs can be used in `netlify.toml`, with comments to explain 
     # Ignore all HTML files in `/admin`
     ignoreDirectories = ['/admin']
     # Perform a11y check against WCAG 2.1 AAA
-    wcagLevel = 'WCAGAAA'
+    wcagLevel = 'WCAG2AAA'
 ```
