@@ -6,6 +6,7 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
 const { getPa11yOpts } = require('./config')
+const { server } = require('./server')
 
 const EMPTY_ARRAY = []
 const ASTERISK = '*'
@@ -15,6 +16,8 @@ const GLOB_HTML = '*.html'
 exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
 	const pa11yOpts = await getPa11yOpts(wcagLevel)
 	let issueCount = 0
+
+	server.listen('9000')
 
 	const results = await Promise.all(
 		htmlFilePaths.map(async (path) => {
@@ -29,6 +32,8 @@ exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
 			}
 		}),
 	)
+
+	server.close()
 
 	await pa11yOpts.browser.close()
 
@@ -65,7 +70,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		})
 
 		for await (const { path } of stream) {
-			filePaths.push(join(fileAndDirPath, path))
+			filePaths.push(join('localhost:9000', fileAndDirPath, path))
 		}
 
 		return filePaths
@@ -82,5 +87,5 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		return EMPTY_ARRAY
 	}
 
-	return [fileAndDirPath]
+	return [join('localhost:9000', fileAndDirPath)]
 }
