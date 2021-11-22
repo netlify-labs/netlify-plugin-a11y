@@ -8,7 +8,7 @@
 
 'use strict'
 
-const { cyan, green, gray, red, underline, yellow } = require('picocolors')
+const { bold, cyan, green, gray, red, underline, yellow } = require('picocolors')
 
 // Pa11y version support
 const PA11Y_SUPPORTS = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
@@ -17,7 +17,7 @@ const DUPLICATE_WHITESPACE_EXP = /\s+/g
 const EMPTY_SPACE = ' '
 const NEWLINE_LITERAL = '\n'
 
-const LOCAL_FILE_PATH_EXP = new RegExp(`/^http\:\/\/localhost:\d{4}\/|${'file://' + process.cwd()}\/`)
+const LOCAL_FILE_PATH_EXP = new RegExp(`^http://localhost:\\d{4}/|${'file://' + process.cwd()}/`);
 
 // Helper strings for use in reporter methods
 const start = cyan(' >')
@@ -71,7 +71,7 @@ function renderResults(results) {
 
 		return cleanWhitespace(`
 
-			${underline(`Results for file: ${publicFilePath}`)}
+			${bold(`Results for file ${underline(publicFilePath)}:`)}
 			${issues.join(NEWLINE_LITERAL)}
 
 			${summary.join(NEWLINE_LITERAL)}
