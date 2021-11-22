@@ -23,15 +23,8 @@ const getConfiguration = ({
 }
 
 const getPa11yOpts = async (wcagLevel) => {
-	const browser = await puppeteer.launch({
-		// NB: Allows iframes to load when HTML page is visited from filesystem.
-		// Without this, a page with an iframe will crash pa11y
-		args: ['--disable-web-security'],
-		ignoreHTTPSErrors: true,
-	})
-
 	return {
-		browser,
+		browser: await puppeteer.launch({ ignoreHTTPSErrors: true }),
 		runners: PA11Y_RUNNERS,
 		userAgent: PA11Y_USER_AGENT,
 		standard: wcagLevel || PA11Y_DEFAULT_WCAG_LEVEL,
