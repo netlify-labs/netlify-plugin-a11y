@@ -6,7 +6,12 @@ const SERVER_HOST = 'localhost'
 const SERVER_PORT = '9000'
 const SERVER_PATH = 'localhost:' + SERVER_PORT
 
-const server = http.createServer(async function (req, res) {
+const SERVER_OPTS = {
+	host: SERVER_HOST,
+	port: SERVER_PORT,
+}
+
+const _server = http.createServer(async function (req, res) {
 	try {
 		res.writeHead(200, { 'Content-type': 'text/html' })
 		res.end(await fs.readFile(req.url))
@@ -16,9 +21,16 @@ const server = http.createServer(async function (req, res) {
 	}
 })
 
+const server = {
+	close() {
+		return _server.close()
+	},
+	listen() {
+		return _server.listen(SERVER_OPTS)
+	},
+}
+
 module.exports = {
 	server,
-	SERVER_HOST,
 	SERVER_PATH,
-	SERVER_PORT,
 }

@@ -6,7 +6,7 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
 const { getPa11yOpts } = require('./config')
-const { server, SERVER_PATH, SERVER_PORT, SERVER_HOST } = require('./server')
+const { server, SERVER_PATH } = require('./server')
 
 const EMPTY_ARRAY = []
 const ASTERISK = '*'
@@ -17,10 +17,7 @@ exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
 	const pa11yOpts = await getPa11yOpts(wcagLevel)
 	let issueCount = 0
 
-	server.listen({
-		host: SERVER_HOST,
-		port: SERVER_PORT,
-	})
+	server.listen()
 
 	const results = await Promise.all(
 		htmlFilePaths.map(async (path) => {
