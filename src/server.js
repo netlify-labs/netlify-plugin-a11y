@@ -13,6 +13,7 @@ const SERVER_OPTS = {
 
 const _server = http.createServer(async function (req, res) {
 	try {
+		// We know all the requests will be for html files
 		res.writeHead(200, { 'Content-type': 'text/html' })
 		res.end(await fs.readFile(req.url))
 	} catch (err) {
@@ -22,9 +23,15 @@ const _server = http.createServer(async function (req, res) {
 })
 
 const server = {
+	/**
+	 * Close the HTTP server
+	 */
 	close() {
 		return _server.close()
 	},
+	/**
+	 * Starts an HTTP server and listens for requests from `localhost` on port `9000`. 
+	 */
 	listen() {
 		return _server.listen(SERVER_OPTS)
 	},
