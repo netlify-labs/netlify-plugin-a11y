@@ -2,6 +2,10 @@
 const http = require('http')
 const fs = require('fs/promises')
 
+const SERVER_HOST = 'localhost'
+const SERVER_PORT = '9000'
+const SERVER_PATH = 'localhost:' + SERVER_PORT
+
 const server = http.createServer(async function (req, res) {
 	res.setHeader('Content-type', 'text/html')
 
@@ -18,10 +22,9 @@ server.addListener('listening', function () {
 	console.log('Listening for connections on port ' + this.address().port)
 })
 
-server.addListener('close', function () {
-	console.log('Closing server')
-})
-
 module.exports = {
 	server,
+	SERVER_HOST,
+	SERVER_PATH,
+	SERVER_PORT,
 }
