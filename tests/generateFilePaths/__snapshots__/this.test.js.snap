@@ -2,8 +2,8 @@
 
 exports[`generateFilePaths works 1`] = `
 Array [
-  "tests/generateFilePaths/publishDir/blog/post1.html",
-  "tests/generateFilePaths/publishDir/blog/post2.html",
-  "tests/generateFilePaths/publishDir/about.html",
+  "localhost:9000/tests/generateFilePaths/publishDir/blog/post1.html",
+  "localhost:9000/tests/generateFilePaths/publishDir/blog/post2.html",
+  "localhost:9000/tests/generateFilePaths/publishDir/about.html",
 ]
 `;
