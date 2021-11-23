@@ -61,10 +61,6 @@ class StaticServer {
 	listen() {
 		return this.instance.listen(SERVER_OPTS)
 	}
-
-	close() {
-		return this.instance.close()
-	}
 }
 
 module.exports = {
