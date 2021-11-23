@@ -22,7 +22,7 @@ class StaticServer {
 	 * @param {string} publishDir
 	 */
 	constructor(publishDir) {
-		this.instance = http.createServer(async function (req, res) {
+		this.instance = http.createServer(function (req, res) {
 			const ext = path.extname(req.url)
 			const filepath = ext === HTML_EXT ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
 
