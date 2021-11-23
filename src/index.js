@@ -20,6 +20,7 @@ module.exports = {
 			const { report, issueCount } = await runPa11y({
 				build,
 				htmlFilePaths,
+				publishDir,
 				wcagLevel,
 			})
 			const reportSummary =

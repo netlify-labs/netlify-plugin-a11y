@@ -6,18 +6,18 @@ const { isDirectory, isFile } = require('path-type')
 const { results: cliReporter } = require('./reporter')
 const readdirp = require('readdirp')
 const { getPa11yOpts } = require('./config')
-const { server, SERVER_PATH } = require('./server')
+const { StaticServer, SERVER_ADDRESS } = require('./server')
 
 const EMPTY_ARRAY = []
 const ASTERISK = '*'
 const HTML_EXT = '.html'
 const GLOB_HTML = '*.html'
 
-exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
+exports.runPa11y = async function ({ build, htmlFilePaths, publishDir, wcagLevel }) {
 	const pa11yOpts = await getPa11yOpts(wcagLevel)
 	let issueCount = 0
 
-	server.listen()
+	const staticServer = new StaticServer(publishDir).listen()
 
 	const results = await Promise.all(
 		htmlFilePaths.map(async (path) => {
@@ -33,7 +33,7 @@ exports.runPa11y = async function ({ build, htmlFilePaths, wcagLevel }) {
 		}),
 	)
 
-	server.close()
+	staticServer.close()
 
 	await pa11yOpts.browser.close()
 
@@ -70,7 +70,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		})
 
 		for await (const { path } of stream) {
-			filePaths.push(join(SERVER_PATH, fileAndDirPath, path))
+			filePaths.push(join(SERVER_ADDRESS, fileAndDirPath, path))
 		}
 
 		return filePaths
@@ -87,5 +87,5 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		return EMPTY_ARRAY
 	}
 
-	return [join(SERVER_PATH, fileAndDirPath)]
+	return [join(SERVER_ADDRESS, fileAndDirPath)]
 }
