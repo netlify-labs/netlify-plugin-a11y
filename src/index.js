@@ -17,6 +17,8 @@ module.exports = {
 				fileAndDirPaths: checkPaths,
 			})
 
+			console.log('Checking your pages. This may take a while...')
+
 			const { report, issueCount } = await runPa11y({
 				build,
 				htmlFilePaths,
