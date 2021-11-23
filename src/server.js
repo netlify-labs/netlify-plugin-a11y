@@ -31,12 +31,12 @@ const contentTypesByExt = {
 
 class StaticServer {
 	/**
-	 * @param {string} publicDir
+	 * @param {string} publishDir
 	 */
-	constructor(publicDir) {
+	constructor(publishDir) {
 		this.instance = http.createServer(function (req, res) {
 			const ext = path.extname(req.url)
-			const filepath = ext === '.html' ? path.join(basePath, req.url) : path.join(basePath, publicDir, req.url)
+			const filepath = ext === '.html' ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
 
 			res.writeHead(200, { 'Content-type': contentTypesByExt[ext] || 'text/plain' })
 
