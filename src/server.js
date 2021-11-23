@@ -26,17 +26,18 @@ class StaticServer {
 			const ext = path.extname(req.url)
 			const filepath = ext === HTML_EXT ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
 
-			res.writeHead(200, { 'Content-type': MIME_TYPES[ext] || 'text/plain' })
-			const stream = fs.createReadStream(filepath, { encoding: 'utf-8' })
+			res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'text/plain' })
 
-			stream.on('open', function () {
-				stream.pipe(res)
-			})
+			const stream = fs.createReadStream(filepath)
 
-			stream.on('error', function (err) {
-				res.statusCode = 500
-				res.end(`Error getting the file: ${err}.`)
-			})
+			stream
+				.on('open', function () {
+					stream.pipe(res)
+				})
+				.on('error', function (err) {
+					res.statusCode = 500
+					res.end(`Error getting the file: ${err}.`)
+				})
 
 			res.on('close', function () {
 				stream.destroy()
