@@ -3,6 +3,8 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 
+const HTML_EXT = '.html'
+
 const SERVER_HOST = 'localhost'
 const SERVER_PORT = '9000'
 const SERVER_ADDRESS = 'localhost:' + SERVER_PORT
@@ -34,13 +36,12 @@ class StaticServer {
 	 * @param {string} publishDir
 	 */
 	constructor(publishDir) {
-		this.instance = http.createServer(function (req, res) {
+		this.instance = http.createServer(async function (req, res) {
 			const ext = path.extname(req.url)
-			const filepath = ext === '.html' ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
+			const filepath = ext === HTML_EXT ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
 
 			res.writeHead(200, { 'Content-type': contentTypesByExt[ext] || 'text/plain' })
-
-			const stream = fs.createReadStream(filepath)
+			const stream = fs.createReadStream(filepath, { encoding: 'utf-8' })
 
 			stream.on('open', function () {
 				stream.pipe(res)
