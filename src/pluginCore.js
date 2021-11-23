@@ -20,9 +20,9 @@ exports.runPa11y = async function ({ build, htmlFilePaths, publishDir, wcagLevel
 	const staticServer = new StaticServer(publishDir).listen()
 
 	const results = await Promise.all(
-		htmlFilePaths.map(async (path) => {
+		htmlFilePaths.map(async (/** @type {string} */ filePath) => {
 			try {
-				const res = await pa11y(path, pa11yOpts)
+				const res = await pa11y(join(SERVER_ADDRESS, filePath), pa11yOpts)
 				if (res.issues.length) {
 					issueCount += res.issues.length
 					return cliReporter(res)
@@ -70,7 +70,7 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		})
 
 		for await (const { path } of stream) {
-			filePaths.push(join(SERVER_ADDRESS, fileAndDirPath, path))
+			filePaths.push(join(fileAndDirPath, path))
 		}
 
 		return filePaths
@@ -87,5 +87,5 @@ const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
 		return EMPTY_ARRAY
 	}
 
-	return [join(SERVER_ADDRESS, fileAndDirPath)]
+	return [fileAndDirPath]
 }
