@@ -2,6 +2,7 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
+const MIME_TYPES = require('./mimeTypes.json')
 
 const HTML_EXT = '.html'
 
@@ -16,21 +17,6 @@ const SERVER_OPTS = {
 
 const basePath = process.cwd()
 
-const contentTypesByExt = {
-	'.ico': 'image/x-icon',
-	'.html': 'text/html',
-	'.js': 'text/javascript',
-	'.json': 'application/json',
-	'.css': 'text/css',
-	'.png': 'image/png',
-	'.jpg': 'image/jpeg',
-	'.wav': 'audio/wav',
-	'.mp3': 'audio/mpeg',
-	'.svg': 'image/svg+xml',
-	'.pdf': 'application/pdf',
-	'.doc': 'application/msword',
-}
-
 class StaticServer {
 	/**
 	 * @param {string} publishDir
@@ -40,7 +26,7 @@ class StaticServer {
 			const ext = path.extname(req.url)
 			const filepath = ext === HTML_EXT ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
 
-			res.writeHead(200, { 'Content-type': contentTypesByExt[ext] || 'text/plain' })
+			res.writeHead(200, { 'Content-type': MIME_TYPES[ext] || 'text/plain' })
 			const stream = fs.createReadStream(filepath, { encoding: 'utf-8' })
 
 			stream.on('open', function () {
