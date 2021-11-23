@@ -4,7 +4,7 @@ exports[`runPa11y works 1`] = `
 Object {
   "issueCount": 1,
   "report": "
-[4mResults for file: ./tests/runPa11y/publishDir/index.html[24m
+[1mResults for file [4mtests/runPa11y/publishDir/index.html[24m:[22m
 
 [31m • Error:[39m Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
 [90m ├── image-alt[39m

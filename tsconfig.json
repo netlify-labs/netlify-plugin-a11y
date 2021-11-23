@@ -8,6 +8,7 @@
     "types": ["jest"],
     "esModuleInterop": true,
     "removeComments": true,
+		"resolveJsonModule": true,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true
   },
