@@ -26,7 +26,7 @@ const getConfiguration = async ({
  * Generates the options object used to configure Pa11y.
  * @param {Object} pa11yInputs
  * @param {String} [pa11yInputs.hideElements]
- * @param {'WCAG2A' | 'WCAG2AA' | 'WCAG2AAA'} pa11yInputs.standard
+ * @param {'WCAG2A' | 'WCAG2AA' | 'WCAG2AAA'} [pa11yInputs.standard]
  * @returns
  */
 const getPa11yOpts = async ({ hideElements, standard }) => {
@@ -41,4 +41,5 @@ const getPa11yOpts = async ({ hideElements, standard }) => {
 
 module.exports = {
 	getConfiguration,
+	getPa11yOpts,
 }
