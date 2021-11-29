@@ -7,7 +7,7 @@ const pico = require('picocolors')
 module.exports = {
 	async onPostBuild({ constants, inputs, utils: { build } }) {
 		try {
-			const { publishDir, checkPaths, ignoreDirectories, wcagLevel, failWithIssues } = getConfiguration({
+			const { publishDir, checkPaths, ignoreDirectories, failWithIssues, pa11yOpts } = await getConfiguration({
 				constants,
 				inputs,
 			})
@@ -23,7 +23,7 @@ module.exports = {
 				build,
 				htmlFilePaths,
 				publishDir,
-				wcagLevel,
+				pa11yOpts,
 			})
 			const reportSummary =
 				`${issueCount === 0 ? 'No' : issueCount} accessibility issues found!` +
