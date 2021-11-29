@@ -7,4 +7,6 @@
   package = "./lib/index.js"
   [plugins.inputs]
     checkPaths = ['/']
+    ignoreDirectories = ['thirdpost']
+    ignoreElements = '.direct-link'
     failWithIssues = false # true by default
