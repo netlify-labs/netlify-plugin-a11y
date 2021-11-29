@@ -92,12 +92,13 @@ If you want to use the plugin's default settings (check **all** pages of your si
 If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inputs]]` field to change how the plugin behaves. This table outlines the inputs the plugin accepts. All of them are optional.
 
 
-| Input name          | Description                                              | Value type       | Possible values                               | Default value |
-|---------------------|----------------------------------------------------------|------------------|-----------------------------------------------|---------------|
-| `checkPaths`        | Indicates which pages of your site to check              | Array of strings | Any directories or HTML files in your project | `['/']`       |
-| `failWithIssues`    | Whether the build should fail if a11y issues are found   | Boolean          | `true` or `false`                             | `true`        |
-| `ignoreDirectories` | Directories that *should not* be checked for a11y issues | Array of strings | Any directories in your project               | `[]`          |
-| `wcagLevel`         | The WCAG standard level against which pages are checked  | String           | `'WCAG2A'` or `'WCAGA2A'` or `'WCAG2AAA'`     | `'WCAG2AA'`   |
+| Input name          | Description                                               | Value type            | Possible values                                       | Default value |
+|---------------------|-----------------------------------------------------------|-----------------------|-------------------------------------------------------|---------------|
+| `checkPaths`        | Indicates which pages of your site to check               | Array of strings      | Any directories or HTML files in your project         | `['/']`       |
+| `failWithIssues`    | Whether the build should fail if a11y issues are found    | Boolean               | `true` or `false`                                     | `true`        |
+| `ignoreDirectories` | Directories that *should not* be checked for a11y issues  | Array of strings      | Any directories in your project                       | `[]`          |
+| `ignoreElements`    | Indicates elements that should be ignored by a11y testing | String (CSS selector) | Comma-separated string of CSS selectors               | `undefined`   |
+| `wcagLevel`         | The WCAG standard level against which pages are checked   | String                | `'WCAG2A'` or `'WCAGA2A'` or `'WCAG2AAA'`             | `'WCAG2AA'`   |
 
 Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
@@ -111,6 +112,8 @@ Here's how these inputs can be used in `netlify.toml`, with comments to explain 
     failWithIssues = false
     # Ignore all HTML files in `/admin`
     ignoreDirectories = ['/admin']
+    # Ignore any accessibility issues associated with an element matching this selector
+    ignoreElements = '.jumbotron > h2'
     # Perform a11y check against WCAG 2.1 AAA
     wcagLevel = 'WCAG2AAA'
 ```
