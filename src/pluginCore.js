@@ -50,8 +50,8 @@ exports.generateFilePaths = async function ({
 		ignoreDirectories.length === 0
 			? ASTERISK
 			: ignoreDirectories.map(
-					// add ! and strip leading slash
-					(dir) => `!${dir.replace(/^\/+/, '')}`,
+					// add ! and strip leading and trailing slashes
+					(dir) => `!${dir.replace(/^\/|\/$/g, '')}`,
 			  )
 	const htmlFilePaths = await Promise.all(
 		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${publishDir}${fileAndDirPath}`, directoryFilter)),
