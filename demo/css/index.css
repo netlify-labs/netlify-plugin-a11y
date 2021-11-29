@@ -1,6 +1,7 @@
+
 /* Colors */
 :root {
-  --color-transparent: rgba(0, 0, 0, 0);
+	--color-transparent: rgba(0, 0, 0, 0);
   --color-black-default: #0e1e25;
   --color-white: #ffffff;
   --color-gray-darkest: #2e3c42;
@@ -56,8 +57,9 @@
   --colorGrayLightest: var(--color-gray-lightest); /* #f9fafa */
   --colorWhite: var(--color-white); /* #ffffff */
 
-  --colorListNeutral: colorBlack, colorBlackDarker, colorGrayDarkest, colorGrayDarker, colorGrayDark, colorGray,
-    colorGrayLight, colorGrayLighter, colorGrayLightest, colorWhite;
+  --colorListNeutral: colorBlack, colorBlackDarker, colorGrayDarkest,
+    colorGrayDarker, colorGrayDark, colorGray, colorGrayLight, colorGrayLighter,
+    colorGrayLightest, colorWhite;
 
   /* Color Palette: Primary colors (teal) */
   --colorTealDarkest: var(--color-teal-darkest); /* #0d544e */
@@ -94,23 +96,33 @@
   --colorPurpleLighter: var(--color-purple-lighter); /* #db95ba */
   --colorPurpleLightest: var(--color-purple-lightest); /* #f2d9e6 */
 
-  --colorListPrimary: colorTealDarkest, colorTealDarker, colorTeal, colorTealLighter, colorTealLightest,
-    colorBlueDarkest, colorBlueDarker, colorBlue, colorBlueLighter, colorBlueLightest, colorGoldDarkest, colorGoldDarker,
-    colorGold, colorGoldLighter, colorGoldLightest, colorRedDarkest, colorRedDarker, colorRed, colorRedLighter,
-    colorRedLightest, colorPurpleDarkest, colorPurpleDarker, colorPurple, colorPurpleLighter, colorPurpleLightest;
+  --colorListPrimary: colorTealDarkest, colorTealDarker, colorTeal,
+    colorTealLighter, colorTealLightest, colorBlueDarkest, colorBlueDarker,
+    colorBlue, colorBlueLighter, colorBlueLightest, colorGoldDarkest,
+    colorGoldDarker, colorGold, colorGoldLighter, colorGoldLightest,
+    colorRedDarkest, colorRedDarker, colorRed, colorRedLighter, colorRedLightest,
+    colorPurpleDarkest, colorPurpleDarker, colorPurple, colorPurpleLighter,
+    colorPurpleLightest;
 
   /* Color Palette: Assorted */
   --colorTransparent: var(--color-transparent);
 
   /* Color Palette: Third party brand colors */
   --colorThirdPartyGitHub: var(--color-third-party-github); /* #151413 */
-  --colorThirdPartyGitHubDark: var(--color-third-party-github-dark); /* #000000 */
+  --colorThirdPartyGitHubDark: var(
+    --color-third-party-github-dark
+  ); /* #000000 */
   --colorThirdPartyGitLab: var(--color-third-party-gitlab); /* #e65528 */
-  --colorThirdPartyGitLabDark: var(--color-third-party-gitlab-dark); /* #c43f17 */
+  --colorThirdPartyGitLabDark: var(
+    --color-third-party-gitlab-dark
+  ); /* #c43f17 */
   --colorThirdPartyBitbucket: var(--color-third-party-bitbucket); /* #0047b3 */
-  --colorThirdPartyBitbucketDark: var(--color-third-party-bitbucket-dark); /* #003380 */
-  --colorListThirdParty: colorThirdPartyGitHub, colorThirdPartyGitHubDark, colorThirdPartyGitLab,
-    colorThirdPartyGitLabDark, colorThirdPartyBitbucket, colorThirdPartyBitbucketDark;
+  --colorThirdPartyBitbucketDark: var(
+    --color-third-party-bitbucket-dark
+  ); /* #003380 */
+  --colorListThirdParty: colorThirdPartyGitHub, colorThirdPartyGitHubDark,
+    colorThirdPartyGitLab, colorThirdPartyGitLabDark, colorThirdPartyBitbucket,
+    colorThirdPartyBitbucketDark;
   /* ⚠️ ⚠️ ⚠️ End of tokens imported from @netlify/netlify-design-tokens */
 
   /*
@@ -140,52 +152,55 @@
   box-sizing: border-box;
 }
 
+
 html {
-  font-size: 62.5%;
-  height: 100%;
+	font-size: 62.5%;
+	height: 100%;
 }
 
 body {
-  display: grid;
+	display: grid;
 
-  font-family: -apple-system, system-ui, sans-serif;
-  font-size: 1.6rem;
+	font-family: 'Mulish', -apple-system, system-ui, sans-serif;
+	font-size: 1.6rem;
 
-  grid-template-rows: auto 1fr auto;
+	grid-template-rows: auto 1fr auto;
 
-  margin: 0;
-  min-height: 100%;
+	margin: 0;
+	min-height: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
 
-  padding: 0;
+	padding: 0;
 }
 
 figure {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 .content,
 .warning {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100rem;
-  width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100rem;
+	width: 95%;
 }
 
-.tmpl-post {
-  display: grid;
-  grid-template-rows: auto 10fr auto;
+.tmpl-post{
+	display: grid;
+	grid-template-rows: auto 10fr auto;
 }
 
 .tmpl-post > .content {
-  padding-bottom: 4rem;
+	padding-bottom: 4rem;
 }
 
 .pagination {
-  border-top: 1px dashed var(--colorGrayLight);
+	border-top: 1px dashed var(--colorGrayLight);
+
 }
+
 
 p:first-child {
   margin-top: 0;
@@ -200,7 +215,7 @@ header:after {
 }
 
 header + * {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 p:last-child {
@@ -210,7 +225,7 @@ p,
 .tmpl-post li,
 img {
   max-width: 37.5em; /* 600px /16 */
-  max-width: 70ch;
+	max-width: 70ch;
 }
 p,
 .tmpl-post li {
@@ -232,9 +247,7 @@ table th {
 
 pre,
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter",
-    "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier,
-    monospace;
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   line-height: 1.5;
 }
 pre {
@@ -253,7 +266,7 @@ pre {
   -ms-hyphens: none;
   hyphens: none;
   padding: 1em;
-  margin: 0.5em 0;
+  margin: .5em 0;
   background-color: #f6f6f6;
 }
 code {
@@ -281,7 +294,7 @@ code {
 }
 .highlight-line-active {
   background-color: #444;
-  background-color: hsla(0, 0%, 27%, 0.8);
+  background-color: hsla(0, 0%, 27%, .8);
 }
 .highlight-line-add {
   background-color: #45844b;
@@ -348,8 +361,8 @@ code {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  padding-left: 0.25em;
-  padding-right: 0.25em;
+  padding-left: .25em;
+  padding-right: .25em;
   text-underline-position: from-font;
   text-underline-offset: 0;
   text-decoration-thickness: 1px;
@@ -361,6 +374,7 @@ code {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
 }
+
 
 /* Tags */
 .post-tag {
@@ -393,13 +407,13 @@ a[href].post-tag:focus {
 
 /* Warning */
 .warning {
-  border-radius: 4px;
-  background-color: var(--colorGoldLightest);
+	border-radius: 4px;
+	background-color: var(--colorGoldLightest);
   padding: 1em 0.625em; /* 16px 10px /16 */
 }
 
 .warning a[href] {
-  color: var(--colorBlueDarker);
+	color: var(--colorBlueDarker);
 }
 .warning ol:only-child {
   margin: 0;
@@ -410,7 +424,7 @@ a[href].post-tag:focus {
   font-family: sans-serif;
   text-decoration: none;
   font-style: normal;
-  margin-left: 0.1em;
+  margin-left: .1em;
 }
 a[href].direct-link,
 a[href].direct-link:visited {

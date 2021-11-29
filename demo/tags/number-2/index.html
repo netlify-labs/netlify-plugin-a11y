@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Would you get a load of these cats</title>
-		<meta name="description" content="This is a post about some cats.">
+		<title>Tagged “number 2”</title>
+		<meta name="description" content="A demo site to illustrate the funcionality of netlify-plugin-a11y.">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="netlify-plugin-a11y">
@@ -12,6 +12,9 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header>
@@ -20,30 +23,39 @@
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/posts/">Archive</a></li>
-					<li class="nav-item"><a href="/contact-me/">Contact me</a></li>
+					<li class="nav-item"><a href="/a11y-errors-page/">A page with some errors</a></li>
 				</ul>
 			</div>
 		</header>
 
-		<main class="tmpl-post">
+		<main class="tmpl-home">
 			<div class="warning">
 				<p>This site is a testing ground for <code>netlify-plugin-a11y</code>. It has a few intentional accessibility errors!</p>
 				<p><em>This is an <a href="https://www.11ty.dev/">Eleventy project</a> created from the <a href="https://github.com/11ty/eleventy-base-blog"><code>eleventy-base-blog</code> repo</a>.</em></p>
 			</div>
 
 			
-<div class="content">
-<h1>Would you get a load of these cats</h1><time datetime="2018-05-01">01 May 2018</time><a href="/tags/another-tag/" class="post-tag">another tag</a>
+<h1>Tagged “number 2”</h1>
 
-<figure>
-	<img src="/img/cats-570x720.png" width="570" height="720">
-	<figcaption>
-		This image doesn't have an <code>alt</code> attribute.
-	</figcaption>
-</figure>
+
+<ol reversed class="postlist" style="counter-reset: start-from 2">
+
+	<li class="postlist-item">
+		<a href="/posts/secondpost/" class="postlist-link">This is my second post.</a>
+		<time class="postlist-date" datetime="2018-07-04">04 Jul 2018</time>
+		
+			
+			<a href="/tags/number-2/" class="post-tag">number 2</a>
+		
+	</li>
+
+</ol>
+
+
+<p>See <a href="/tags/">all tags</a>.</p>
 
 
 		</main>
-		<!-- Current page: /posts/2018-05-01/ -->
+		<!-- Current page: /tags/number-2/ -->
 	</body>
 </html>

@@ -1,0 +1,85 @@
+/**
+ * Do not edit directly
+ * Generated on Mon, 12 Apr 2021 08:37:11 GMT
+ */
+
+ :root {
+  --color-transparent: rgba(0, 0, 0, 0);
+  --color-black-default: #0e1e25;
+  --color-white: #ffffff;
+  --color-gray-darkest: #2e3c42;
+  --color-gray-darker: #646e73;
+  --color-gray-dark: #7e878b;
+  --color-gray-default: #a4aaad;
+  --color-gray-light: #eaebec;
+  --color-gray-lighter: #f5f5f5;
+  --color-gray-lightest: #f9fafa;
+  --color-teal-darkest: #0d544e;
+  --color-teal-darker: #15847b;
+  --color-teal-default: #00ad9f;
+  --color-teal-lighter: #00c7b6;
+  --color-teal-lightest: #c9eeea;
+  --color-blue-darkest: #0f456c;
+  --color-blue-darker: #146394;
+  --color-blue-default: #298fc2;
+  --color-blue-lighter: #46b6d8;
+  --color-blue-lightest: #bce4f1;
+  --color-gold-darkest: #66400f;
+  --color-gold-darker: #a46819;
+  --color-gold-default: #cc811e;
+  --color-gold-lighter: #ffad42;
+  --color-gold-lightest: #ffe4c2;
+  --color-red-darkest: #8e0b30;
+  --color-red-darker: #d32254;
+  --color-red-default: #f22c64;
+  --color-red-lighter: #fe7299;
+  --color-red-lightest: #fed7e2;
+  --color-purple-darkest: #5f1b51;
+  --color-purple-darker: #8c1773;
+  --color-purple-default: #bc6292;
+  --color-purple-lighter: #db95ba;
+  --color-purple-lightest: #f2d9e6;
+  --color-third-party-github: #151413;
+  --color-third-party-github-dark: #000000;
+  --color-third-party-gitlab: #e65528;
+  --color-third-party-gitlab-dark: #c43f17;
+  --color-third-party-bitbucket: #0047b3;
+  --color-third-party-bitbucket-dark: #003380;
+  --color-dark-black-darker: #021117;
+  --color-dark-black-default: #0e1e25;
+  --color-dark-gray-darkest: #16262c;
+  --color-dark-gray-darker: #1b2b32;
+  --color-dark-gray-dark: #243238;
+  --color-dark-gray-default: #48565b;
+  --color-dark-gray-light: #7e878b;
+  --color-dark-gray-lighter: #a4aaad;
+  --color-dark-gray-lightest: #eaebec;
+  --color-dark-teal-darkest: #083532;
+  --color-dark-teal-darker: #15847b;
+  --color-dark-teal-default: #00ad9f;
+  --color-dark-teal-lighter: #00c7b6;
+  --color-dark-teal-lightest: #5cebdf;
+  --color-dark-blue-darkest: #092e49;
+  --color-dark-blue-darker: #155884;
+  --color-dark-blue-default: #1083bc;
+  --color-dark-blue-lighter: #1fb3e0;
+  --color-dark-blue-lightest: #5cc7eb;
+  --color-dark-gold-darkest: #472d0b;
+  --color-dark-gold-darker: #855414;
+  --color-dark-gold-default: #cc811e;
+  --color-dark-gold-lighter: #ffad42;
+  --color-dark-gold-lightest: #ffc170;
+  --color-dark-red-darkest: #4b061a;
+  --color-dark-red-darker: #8e0b30;
+  --color-dark-red-default: #d32254;
+  --color-dark-red-lighter: #fd5383;
+  --color-dark-red-lightest: #ff7aa0;
+  --color-dark-purple-darkest: #401236;
+  --color-dark-purple-darker: #83166b;
+  --color-dark-purple-default: #bf36a1;
+  --color-dark-purple-lighter: #e561cb;
+  --color-dark-purple-lightest: #e58bd1;
+  --color-dark-third-party-github: #ffffff;
+  --color-dark-third-party-gitlab: #e65528;
+  --color-dark-third-party-bitbucket: #0047b3;
+}

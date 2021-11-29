@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Tagged “another tag”</title>
+		<title>A page with some errors</title>
 		<meta name="description" content="A demo site to illustrate the funcionality of netlify-plugin-a11y.">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
@@ -23,39 +23,30 @@
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/posts/">Archive</a></li>
-					<li class="nav-item"><a href="/a11y-errors-page/">A page with some errors</a></li>
+					<li class="nav-item nav-item-active"><a href="/a11y-errors-page/">A page with some errors</a></li>
 				</ul>
 			</div>
 		</header>
 
-		<main class="tmpl-home">
+		<main class="tmpl-post">
 			<div class="warning">
 				<p>This site is a testing ground for <code>netlify-plugin-a11y</code>. It has a few intentional accessibility errors!</p>
 				<p><em>This is an <a href="https://www.11ty.dev/">Eleventy project</a> created from the <a href="https://github.com/11ty/eleventy-base-blog"><code>eleventy-base-blog</code> repo</a>.</em></p>
 			</div>
 
 			
-<h1>Tagged “another tag”</h1>
+<div class="content">
+<h1>A page with some errors</h1>
 
-
-<ol reversed class="postlist" style="counter-reset: start-from 2">
-
-	<li class="postlist-item">
-		<a href="/posts/firstpost/" class="postlist-link">This is my first post.</a>
-		<time class="postlist-date" datetime="2018-05-01">01 May 2018</time>
-		
-			
-			<a href="/tags/another-tag/" class="post-tag">another tag</a>
-		
-	</li>
-
-</ol>
-
-
-<p>See <a href="/tags/">all tags</a>.</p>
+<figure>
+	<img src="/img/cats-570x720.png" width="570" height="720">
+	<figcaption>
+		This image doesn't have an <code>alt</code> attribute.
+	</figcaption>
+</figure>
 
 
 		</main>
-		<!-- Current page: /tags/another-tag/ -->
+		<!-- Current page: /a11y-errors-page/ -->
 	</body>
 </html>
