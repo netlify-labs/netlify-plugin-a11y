@@ -31,7 +31,7 @@ module.exports = {
 
 			console.log(report)
 
-			if (failWithIssues) {
+			if (failWithIssues && issueCount > 0) {
 				build.failBuild(reportSummary)
 			} else {
 				console.warn(pico.magenta(reportSummary))
