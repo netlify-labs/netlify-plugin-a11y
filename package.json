@@ -38,11 +38,11 @@
     "node": ">=12"
   },
   "devDependencies": {
-    "@netlify/eslint-config-node": "^3.3.9",
+    "@netlify/eslint-config-node": "^3.3.11",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.0",
+    "jest": "^27.4.3",
     "lint-staged": "^11.2.6",
     "prettier": "^2.5.0",
     "rimraf": "^3.0.2",
