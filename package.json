@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@netlify/eslint-config-node": "^4.0.4",
+    "@types/jest": "^27.4.0",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
@@ -46,6 +47,7 @@
     "lint-staged": "^11.2.6",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.2",
     "typescript": "^4.5.4"
   },
   "repository": "https://github.com/netlify-labs/netlify-plugin-a11y",
