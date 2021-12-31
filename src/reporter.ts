@@ -4,11 +4,10 @@
  *
  * @see https://github.com/pa11y/pa11y/blob/6.1.1/lib/reporters/cli.js
  */
-// @ts-check
 
 'use strict'
 
-const { bold, cyan, green, gray, red, underline, yellow } = require('picocolors')
+import { bold, cyan, green, gray, red, underline, yellow } from 'picocolors'
 
 // Pa11y version support
 const PA11Y_SUPPORTS = '^6.0.0 || ^6.0.0-alpha || ^6.0.0-beta'
@@ -43,7 +42,7 @@ function renderIssue(issue) {
 }
 
 // Output formatted results
-function renderResults(results) {
+function renderResults(results): string {
 	if (results.issues.length) {
 		const publicFilePath = results.pageUrl.replace(LOCAL_FILE_PATH_EXP, '')
 		const totals = {
@@ -91,7 +90,7 @@ function renderBegin() {
 }
 
 // Output debug messages
-function renderDebug(message) {
+function renderDebug(message: string) {
 	message = `Debug: ${message}`
 	return cleanWhitespace(`
 		${start} ${gray(message)}
@@ -99,13 +98,13 @@ function renderDebug(message) {
 }
 
 // Output information messages
-function renderInfo(message) {
+function renderInfo(message: string) {
 	return cleanWhitespace(`
 		${start} ${message}
 	`)
 }
 
-function renderError(message) {
+function renderError(message: string) {
 	if (!/^error:/i.test(message)) {
 		message = `Error: ${message}`
 	}
@@ -116,19 +115,21 @@ function renderError(message) {
 
 // Clean whitespace from output. This function is used to keep
 // the reporter code a little cleaner
-function cleanWhitespace(string) {
+function cleanWhitespace(string): string {
 	return string.replace(/\t+|^\t*\n|\n\t*$/g, '')
 }
 
-function pluralize(noun, count) {
+function pluralize(noun: string, count: number): string {
 	return count === 1 ? noun : noun + 's'
 }
 
-module.exports = {
-	begin: renderBegin,
-	debug: renderDebug,
-	info: renderInfo,
-	error: renderError,
-	results: renderResults,
-	supports: PA11Y_SUPPORTS,
+
+
+ export {
+	renderBegin as begin,
+	renderDebug as debug,
+	renderInfo as info,
+	renderError as error,
+	renderResults as results,
+	PA11Y_SUPPORTS as supports,
 }

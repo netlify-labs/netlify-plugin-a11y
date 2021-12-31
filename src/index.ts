@@ -1,11 +1,11 @@
-// @ts-check
+import { getConfiguration } from './config'
+import { generateFilePaths, runPa11y } from './pluginCore'
+import pico from 'picocolors'
 
-const { getConfiguration } = require('./config')
-const { generateFilePaths, runPa11y } = require('./pluginCore')
-const pico = require('picocolors')
+import type { OnPostBuild } from '@netlify/build'
 
 module.exports = {
-	async onPostBuild({ constants, inputs, utils: { build } }) {
+	async onPostBuild({ constants, inputs, utils: { build }, }) {
 		try {
 			const { publishDir, checkPaths, ignoreDirectories, failWithIssues, pa11yOpts } = await getConfiguration({
 				constants,
@@ -40,4 +40,6 @@ module.exports = {
 			build.failBuild(err.message)
 		}
 	},
+} as {
+	onPostBuild: OnPostBuild
 }

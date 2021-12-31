@@ -1,24 +1,35 @@
-// @ts-check
+import pa11y from 'pa11y'
+import { extname, join } from 'path'
+import { isDirectory, isFile } from 'path-type'
+import { results as cliReporter } from './reporter'
+import readdirp from 'readdirp'
+import { StaticServer, SERVER_ADDRESS } from './server'
 
-const pa11y = require('pa11y')
-const { extname, join } = require('path')
-const { isDirectory, isFile } = require('path-type')
-const { results: cliReporter } = require('./reporter')
-const readdirp = require('readdirp')
-const { StaticServer, SERVER_ADDRESS } = require('./server')
+import type { NetlifyPluginUtils } from '@netlify/build'
+import type { Pa11yOpts } from './config'
 
 const EMPTY_ARRAY = []
-const ASTERISK = '*'
+const ASTERISK = '*';
 const HTML_EXT = '.html'
 const GLOB_HTML = '*.html'
 
-exports.runPa11y = async function ({ build, htmlFilePaths, pa11yOpts, publishDir }) {
+export const runPa11y = async function ({
+	build,
+	htmlFilePaths,
+	pa11yOpts,
+	publishDir,
+}: {
+	build: NetlifyPluginUtils['build']
+	htmlFilePaths: string[]
+	pa11yOpts: Pa11yOpts
+	publishDir: string
+}) {
 	let issueCount = 0
 
 	const staticServer = new StaticServer(publishDir).listen()
 
 	const results = await Promise.all(
-		htmlFilePaths.map(async (/** @type {string} */ filePath) => {
+		htmlFilePaths.map(async (filePath) => {
 			try {
 				const res = await pa11y(join(SERVER_ADDRESS, filePath), pa11yOpts)
 				if (res.issues.length) {
@@ -41,10 +52,14 @@ exports.runPa11y = async function ({ build, htmlFilePaths, pa11yOpts, publishDir
 	}
 }
 
-exports.generateFilePaths = async function ({
+export const generateFilePaths = async function ({
 	fileAndDirPaths, // array, mix of html and directories
 	ignoreDirectories,
 	publishDir,
+}: {
+	fileAndDirPaths: string[]
+	ignoreDirectories: string[]
+	publishDir: string
 }) {
 	const directoryFilter =
 		ignoreDirectories.length === 0
@@ -56,10 +71,11 @@ exports.generateFilePaths = async function ({
 	const htmlFilePaths = await Promise.all(
 		fileAndDirPaths.map((fileAndDirPath) => findHtmlFiles(`${publishDir}${fileAndDirPath}`, directoryFilter)),
 	)
-	return [].concat(...htmlFilePaths)
+
+	return [].concat(...htmlFilePaths) as string[]
 }
 
-const findHtmlFiles = async function (fileAndDirPath, directoryFilter) {
+const findHtmlFiles = async function (fileAndDirPath: string, directoryFilter: '*' | string[]): Promise<string[]> {
 	if (await isDirectory(fileAndDirPath)) {
 		const filePaths = []
 		const stream = readdirp(fileAndDirPath, {
