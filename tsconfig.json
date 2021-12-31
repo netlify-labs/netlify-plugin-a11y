@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "lib": ["ES2020"],
+    "lib": ["ES2019"],
     "allowJs": true,
     "outDir": "./lib",
     "types": ["jest"],
