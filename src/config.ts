@@ -27,7 +27,7 @@ export const getConfiguration = async ({
 		inputs as InputT
 	return {
 		checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
-		failWithIssues: failWithIssues !== undefined ? failWithIssues : DEFAULT_FAIL_WITH_ISSUES,
+		failWithIssues: failWithIssues ?? DEFAULT_FAIL_WITH_ISSUES,
 		ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
 		pa11yOpts: await getPa11yOpts({
 			hideElements: ignoreElements,
