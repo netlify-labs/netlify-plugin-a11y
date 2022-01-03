@@ -1,8 +1,7 @@
-// @ts-check
-const http = require('http')
-const fs = require('fs')
-const path = require('path')
-const MIME_TYPES = require('./mimeTypes.json')
+import http, { Server } from 'http'
+import fs from 'fs'
+import path from 'path'
+import MIME_TYPES from './mimeTypes.json'
 
 const HTML_EXT = '.html'
 
@@ -18,10 +17,8 @@ const SERVER_OPTS = {
 const basePath = process.cwd()
 
 class StaticServer {
-	/**
-	 * @param {string} publishDir
-	 */
-	constructor(publishDir) {
+	instance: Server
+	constructor(publishDir: string) {
 		this.instance = http.createServer(function (req, res) {
 			const ext = path.extname(req.url)
 			const filepath = ext === HTML_EXT ? path.join(basePath, req.url) : path.join(basePath, publishDir, req.url)
@@ -50,7 +47,7 @@ class StaticServer {
 	}
 }
 
-module.exports = {
+export {
 	StaticServer,
 	SERVER_ADDRESS,
 }
