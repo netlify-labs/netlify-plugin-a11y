@@ -9,7 +9,7 @@ import type { NetlifyPluginUtils } from '@netlify/build'
 import type { Pa11yOpts } from './config'
 
 const EMPTY_ARRAY = []
-const ASTERISK = '*';
+const ASTERISK = '*'
 const HTML_EXT = '.html'
 const GLOB_HTML = '*.html'
 
@@ -24,31 +24,33 @@ export const runPa11y = async function ({
 	pa11yOpts: Pa11yOpts
 	publishDir: string
 }) {
-	let issueCount = 0
-
 	const staticServer = new StaticServer(publishDir).listen()
+	try {
+		const results = await Promise.all(
+			htmlFilePaths.map((filePath) => {
+				return pa11y(join(SERVER_ADDRESS, filePath), pa11yOpts)
+			}),
+		)
+		staticServer.close()
 
-	const results = await Promise.all(
-		htmlFilePaths.map(async (filePath) => {
-			try {
-				const res = await pa11y(join(SERVER_ADDRESS, filePath), pa11yOpts)
-				if (res.issues.length) {
-					issueCount += res.issues.length
-					return cliReporter(res)
-				}
-			} catch (error) {
-				build.failBuild('pa11y failed', { error })
-			}
-		}),
-	)
+		await pa11yOpts.browser.close()
 
-	staticServer.close()
+		const reports = []
+		let issueCount = 0
 
-	await pa11yOpts.browser.close()
+		for (const r of results) {
+			if (r.issues.length === 0) continue
 
-	return {
-		issueCount,
-		report: results.join(''),
+			issueCount += r.issues.length
+			reports.push(cliReporter(r))
+		}
+
+		return {
+			issueCount,
+			report: reports.join(''),
+		}
+	} catch (error) {
+		build.failBuild('pa11y failed!', { error })
 	}
 }
 
