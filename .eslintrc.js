@@ -4,7 +4,7 @@ module.exports = {
 		node: true,
 	},
 	parserOptions: {
-		ecmaVersion: '2019',
+		ecmaVersion: '2020',
 	},
 	overrides: [...overrides],
 	extends: 'prettier',
