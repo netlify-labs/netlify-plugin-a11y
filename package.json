@@ -8,12 +8,12 @@
     "manifest.yml"
   ],
   "dependencies": {
-    "pa11y": "^6.1.1",
+    "pa11y": "^6.2.3",
     "path-type": "^4.0.0",
     "picocolors": "^1.0.0",
     "puppeteer": "~9.1.1",
     "readdirp": "^3.6.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "scripts": {
     "build": "tsc",
@@ -39,18 +39,18 @@
     "node": ">=12"
   },
   "devDependencies": {
-    "@netlify/build": "^26.0.2",
-    "@netlify/eslint-config-node": "^4.0.4",
-    "@types/jest": "^27.4.0",
-    "eslint": "^8.5.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@netlify/build": "^27.0.1",
+    "@netlify/eslint-config-node": "^6.0.0",
+    "@types/jest": "^27.4.1",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.5",
-    "lint-staged": "^11.2.6",
-    "prettier": "^2.5.1",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.5.4"
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.4"
   },
   "repository": "https://github.com/netlify-labs/netlify-plugin-a11y",
   "bugs": {
