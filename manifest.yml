@@ -11,6 +11,8 @@ inputs:
     description: Array of directories whose pages the plugin should ignore when checking for a11y issues. Defaults to [].
   - name: ignoreElements
     description: A CSS selector to ignore elements when testing. Accepts multiple comma-separated selectors.
+  - name: ignoreGuidelines
+    description: Ignore any accessibility issues associated with this rule code or type. Accepts multiple comma-separated rules.
   - name: wcagLevel
     default: 'WCAG2AA'
     description: The level of WCAG 2.1 against which to check site pages. Defaults to 'WCAGAA'; can also be 'WCAGA' or 'WCAGAAA'.
