@@ -8,12 +8,12 @@
     "manifest.yml"
   ],
   "dependencies": {
-    "pa11y": "^6.1.1",
+    "pa11y": "^6.2.3",
     "path-type": "^4.0.0",
     "picocolors": "^1.0.0",
     "puppeteer": "~9.1.1",
     "readdirp": "^3.6.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "scripts": {
     "build": "tsc",
