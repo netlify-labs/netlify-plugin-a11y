@@ -6,7 +6,7 @@ Object {
   "report": "
 [1mResults for file [4mtests/runPa11y/publishDir/index.html[24m:[22m
 
-[31m • Error:[39m Images must have alternate text (https://dequeuniversity.com/rules/axe/4.3/image-alt?application=axeAPI)
+[31m • Error:[39m Images must have alternate text (https://dequeuniversity.com/rules/axe/4.2/image-alt?application=axeAPI)
 [90m ├── image-alt[39m
 [90m ├── html > body > img[39m
 [90m └── <img src=\\"https://placekitten.com/200/300\\">[39m
