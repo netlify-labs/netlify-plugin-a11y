@@ -7,8 +7,9 @@ type InputT = {
 	checkPaths?: string[],
 	ignoreDirectories?: string[],
 	ignoreElements?: string,
+	ignoreGuidelines?: string[],
 	failWithIssues?: boolean,
-	wcagLevel?: WCAGLevel
+	wcagLevel?: WCAGLevel,
 }
 
 const DEFAULT_CHECK_PATHS = ['/']
@@ -23,7 +24,7 @@ export const getConfiguration = async ({
 	constants: { PUBLISH_DIR },
 	inputs,
 }: Pick<NetlifyPluginOptions, 'constants' | 'inputs'>) => {
-	const { checkPaths, ignoreDirectories, ignoreElements, failWithIssues, wcagLevel } =
+	const { checkPaths, ignoreDirectories, ignoreElements, ignoreGuidelines, failWithIssues, wcagLevel } =
 		inputs as InputT
 	return {
 		checkPaths: checkPaths || DEFAULT_CHECK_PATHS,
@@ -31,6 +32,7 @@ export const getConfiguration = async ({
 		ignoreDirectories: ignoreDirectories || DEFAULT_IGNORE_DIRECTORIES,
 		pa11yOpts: await getPa11yOpts({
 			hideElements: ignoreElements,
+			ignore: ignoreGuidelines,
 			standard: wcagLevel || PA11Y_DEFAULT_WCAG_LEVEL,
 		}),
 		publishDir: (PUBLISH_DIR || process.env.PUBLISH_DIR) as string,
@@ -39,10 +41,11 @@ export const getConfiguration = async ({
 
 export type Config = ReturnType<typeof getConfiguration>
 
-export const getPa11yOpts = async ({ hideElements, standard }: { hideElements?: string; standard: WCAGLevel }) => {
+export const getPa11yOpts = async ({ hideElements, ignore, standard }: { hideElements?: string; ignore?: string[]; standard: WCAGLevel }) => {
 	return {
 		browser: await puppeteer.launch({ ignoreHTTPSErrors: true }),
 		hideElements,
+		ignore,
 		runners: PA11Y_RUNNERS,
 		userAgent: PA11Y_USER_AGENT,
 		standard,
