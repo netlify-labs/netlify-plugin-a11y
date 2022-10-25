@@ -100,6 +100,7 @@ If you've installed the plugin via `netlify.toml`, you can add a `[[plugins.inpu
 | `ignoreElements`    | Indicates elements that should be ignored by a11y testing                                            | String (CSS selector) | Comma-separated string of CSS selectors       | `undefined`   |
 | `ignoreGuidelines`  | Indicates guidelines and types to ignore ([pa11y docs](https://github.com/pa11y/pa11y#ignore-array)) | Array of strings      | Comma-separated string of WCAG Guidlines      | `[]`          |
 | `wcagLevel`         | The WCAG standard level against which pages are checked                                              | String                | `'WCAG2A'` or `'WCAGA2A'` or `'WCAG2AAA'`     | `'WCAG2AA'`   |
+| `timeout`           | Amount of time, in milliseconds, the scan will run before timing out.                                | Number               | Any positive integer                          | 60000         |
 
 Here's how these inputs can be used in `netlify.toml`, with comments to explain how each input affects the plugin's behavior:
 
@@ -119,4 +120,6 @@ Here's how these inputs can be used in `netlify.toml`, with comments to explain 
     ignoreGuidelines = ['WCAG2AA.Principle1.Guideline1_4.1_4_6.G17']
     # Perform a11y check against WCAG 2.1 AAA
     wcagLevel = 'WCAG2AAA'
+    # Extends the timeout of the scan to 2 minutes (120000ms)
+    timeout = 120000
 ```
