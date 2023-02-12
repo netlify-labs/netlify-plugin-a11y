@@ -40,7 +40,7 @@
     "npm": ">= 7.10.0"
   },
   "devDependencies": {
-    "@netlify/build": "^27.1.4",
+    "@netlify/build": "^29.5.5",
     "@netlify/eslint-config-node": "^6.0.0",
     "@types/jest": "^28.1.1",
     "eslint": "^8.17.0",
